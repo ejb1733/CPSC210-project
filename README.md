@@ -11,9 +11,16 @@
 
 ![UBC's beautiful logo](/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/the-university-of-british-columbia-ubc-vector-logo.png)
  
-> This project is intended for UBC Science students to use when figuring out their
-> course schedules - which can prove to be quite the feat! This project is of interest to me,
-> as I believe that UBC's Course Navigator could benefit from a list of what pre-requisites a course fulfills.
-> For example, CPSC 110 is a direct pre-requisite for CPSC 210! That way, students can better choose between
-> two classes (say, MATH 210 and CPSC 210... where CPSC 210 is a pre-requisite for many classes,
-> while MATH 210 is not. </p>
+ >This project is intended for UBC Science students to use when figuring out their
+ course schedules - which can prove to be quite the feat! This project is of interest to me,
+ as I believe that UBC's Course Navigator could benefit from a list of what pre-requisites a course fulfills.
+ For example, CPSC 110 is a direct pre-requisite for CPSC 210! That way, students can better choose between
+ two classes (say, MATH 210 and CPSC 210... where CPSC 210 is a pre-requisite for many classes,
+ while MATH 210 is not.
+
+<h3><center><b><em>User Stories</em></b></center></h3>
+
+- As a user, I'd like to be able to add courses to my course schedule.
+- As a user, I want to be able to check my schedule's compatibility
+- As a user, I'd like to see if my course has pre-requisites
+- As a user, I want to see what pre-requisites a course fulfills
