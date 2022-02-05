@@ -156,7 +156,6 @@ public class StudentWorklist implements Courses {
         for (int i = 0; i < year.getCourses().size(); i++) {
             if (num - 1 == i) {
                 this.worklist.addCourse(year.getCourses().get(i));
-
             }
         }
     }
