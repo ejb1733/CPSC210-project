@@ -17,6 +17,8 @@
  For example, CPSC 110 is a direct pre-requisite for CPSC 210! That way, students can better choose between
  two classes (say, MATH 210 and CPSC 210... where CPSC 210 is a pre-requisite for many classes,
  while MATH 210 is not.
+> 
+> This project is based off the courses listed at https://www.cs.ubc.ca/prerequisite-rules
 
 <h3><center><b><em>User Stories</em></b></center></h3>
 

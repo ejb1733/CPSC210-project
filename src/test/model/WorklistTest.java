@@ -23,7 +23,7 @@ public class WorklistTest implements Courses {
         testWL.addCourse(cpsc210);
         assertEquals(1, testWL.getWorklistSize());
 
-        testWL.addCourse(cpsc201);
+        testWL.addCourse(cpsc310);
         assertEquals(2, testWL.getWorklistSize());
     }
 

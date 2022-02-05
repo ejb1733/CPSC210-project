@@ -1,19 +1,10 @@
 package ui;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
-import model.Course;
 import model.CourseCatalogue;
 import model.Courses;
 import model.Worklist;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
-import java.util.*;
-
-import static model.Courses.*;
 
 // Student Worklist Program
 public class StudentWorklist implements Courses {
@@ -23,8 +14,6 @@ public class StudentWorklist implements Courses {
     private CourseCatalogue fourthYearCourses;
 
     private Worklist worklist;
-
-    private final ArrayList<Course> empty = new ArrayList<>();
 
     private Scanner input;
 
@@ -82,6 +71,7 @@ public class StudentWorklist implements Courses {
     private void init() {
         firstYearCourses = new CourseCatalogue("First Year Courses", firstYears);
         secondYearCourses = new CourseCatalogue("Second Year Courses", secondYears);
+        thirdYearCourses = new CourseCatalogue("Third Year Courses", thirdYears);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -144,6 +134,9 @@ public class StudentWorklist implements Courses {
 
     private void displayThirdYearOptions() {
         System.out.println("Please select from the following third year courses:");
+        for (int c = 0; c < thirdYearCourses.getCourses().size(); c++) {
+            System.out.println("\t" + (c + 1) + " -> " + thirdYearCourses.getCourses().get(c).getCourseName());
+        }
     }
 
     private void displayFourthYearOptions() {
@@ -163,14 +156,15 @@ public class StudentWorklist implements Courses {
     private void addMore() {
         System.out.println("\nWould you like to add more courses?");
         System.out.println("\tY -> Add more courses");
-        System.out.println("\tN -> View worklist and quit program");
+        System.out.println("\tN -> View worklist and exit to menu");
         String command = input.next();
         command = command.toLowerCase();
         if (command.equals("y")) {
             createWorklist();
         } else if (command.equals("n")) {
+            System.out.println("\n" + this.worklist.getWorklistName());
             for (int i = 0; i < this.worklist.getWorklistSize(); i++) {
-                System.out.println(worklist.getWorklistEntries().get(worklist.getWorklistSize()
+                System.out.println("\t- " + worklist.getWorklistEntries().get(worklist.getWorklistSize()
                         - 1 - i).getCourseName());
             }
         }

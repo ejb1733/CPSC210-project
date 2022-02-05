@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+// Worklist abstraction that represents a student's worklist.
+// A worklist has a name and list of courses that a student has chosen.
 public class Worklist {
     private String name;
     private ArrayList<Course> worklist;
@@ -40,14 +42,17 @@ public class Worklist {
         this.worklist.remove(course);
     }
 
+    // EFFECTS: returns the size of a worklist
     public int getWorklistSize() {
         return this.worklist.size();
     }
 
+    // EFFECTS: returns the name of a worklist
     public String getWorklistName() {
         return this.name;
     }
 
+    // EFFECTS: returns a worklists' course entries
     public ArrayList<Course> getWorklistEntries() {
         return this.worklist;
     }

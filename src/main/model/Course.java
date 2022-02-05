@@ -1,24 +1,25 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+// Abstraction for Course which has a name and list of pre-requisites
 public class Course {
-    private String name;
-    private ArrayList<Course> prereqs;
+    private final String name;
+    private final ArrayList<Course> prereqs;
 
-    private final ArrayList<Course> noPrereqs = new ArrayList<>();
-
+    // MODIFIES: this
     // EFFECTS: constructs a Course with given name and list of its pre-requisite classes
     public Course(String name, ArrayList<Course> prereqs) {
         this.name = name;
         this.prereqs = prereqs;
     }
 
+    // EFFECTS: returns a Course's name
     public String getCourseName() {
         return this.name;
     }
 
+    // EFFECTS: returns a course's pre-requisites
     public ArrayList<Course> getPrereqs() {
         return this.prereqs;
     }

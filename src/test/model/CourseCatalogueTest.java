@@ -3,21 +3,16 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CourseCatalogueTest implements Courses {
 
-    private ArrayList<Course> firstYearCourses;
     private CourseCatalogue firstYear;
 
     @BeforeEach
     void runBefore() {
-        firstYearCourses = new ArrayList<>(firstYears);
-        firstYear = new CourseCatalogue("First Year Courses", firstYearCourses);
+        firstYear = new CourseCatalogue("First Year Courses", firstYears);
     }
 
     @Test
