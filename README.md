@@ -20,7 +20,7 @@
 
 <h3><center><b><em>User Stories</em></b></center></h3>
 
-- As a user, I'd like to be able to add courses to my course schedule.
+- As a user, I'd like to be able to add Courses to my course schedule.
 - As a user, I want to be able to check my schedule's compatibility
 - As a user, I'd like to see if my course has pre-requisites
 - As a user, I want to see what pre-requisites a course fulfills

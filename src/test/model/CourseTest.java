@@ -3,14 +3,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class CourseTest {
-    private Course CPSC210;
-    private Course CPSC110;
-    private ArrayList<Course> emptyArray;
+public class CourseTest implements Courses {
 
     @BeforeEach
     void runBefore() {
@@ -18,13 +14,12 @@ public class CourseTest {
     }
 
     @Test
-    void testConstructor() {
-        ArrayList<Course> pr1 = new ArrayList<>();
-        CPSC110 = new Course("CPSC 110", emptyArray);
-        pr1.add(CPSC110);
-        CPSC210 = new Course("CPSC 210", pr1);
-        assertEquals("CPSC 210", CPSC210.getName());
-        assertEquals(CPSC110, CPSC210.getPrereqs().get(0));
+    void constructorTest() {
+        assertEquals("CPSC 110", cpsc110.getCourseName());
+        assertEquals("CPSC 210", cpsc210.getCourseName());
+        assertEquals(prereq121, cpsc121.getPrereqs());
+        assertEquals(prereq210, cpsc210.getPrereqs());
+        assertTrue(cpsc110.getPrereqs().isEmpty());
     }
 
 }

@@ -1,10 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Course {
     private String name;
     private ArrayList<Course> prereqs;
+
+    private final ArrayList<Course> noPrereqs = new ArrayList<>();
 
     // EFFECTS: constructs a Course with given name and list of its pre-requisite classes
     public Course(String name, ArrayList<Course> prereqs) {
@@ -12,7 +15,7 @@ public class Course {
         this.prereqs = prereqs;
     }
 
-    public String getName() {
+    public String getCourseName() {
         return this.name;
     }
 

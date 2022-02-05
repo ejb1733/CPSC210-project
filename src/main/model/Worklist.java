@@ -19,17 +19,37 @@ public class Worklist {
     }
 
     // TODO
+    // REQUIRES: course given is a real course
     // MODIFIES: this
     // EFFECTS: adds course to worklist
     public void addCourse(Course course) {
-        this.worklist.add(course);
+        if (this.worklist.contains(course)) {
+            System.out.println("This course cannot be added, as it's already in your worklist!");
+        } else {
+            this.worklist.add(course);
+            System.out.println("Successfully added " + course.getCourseName()
+                    + " to your worklist " + getWorklistName());
+        }
     }
 
     // TODO
+    // REQUIRES: course given is a real course
     // MODIFIES: this
     // EFFECTS: removes course from worklist
     public void removeCourse(Course course) {
         this.worklist.remove(course);
+    }
+
+    public int getWorklistSize() {
+        return this.worklist.size();
+    }
+
+    public String getWorklistName() {
+        return this.name;
+    }
+
+    public ArrayList<Course> getWorklistEntries() {
+        return this.worklist;
     }
 
 }
