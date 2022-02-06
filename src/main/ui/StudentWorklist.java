@@ -72,6 +72,7 @@ public class StudentWorklist implements Courses {
         firstYearCourses = new CourseCatalogue("First Year Courses", firstYears);
         secondYearCourses = new CourseCatalogue("Second Year Courses", secondYears);
         thirdYearCourses = new CourseCatalogue("Third Year Courses", thirdYears);
+        fourthYearCourses = new CourseCatalogue("Fourth Year Courses", fourthYears);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -141,6 +142,9 @@ public class StudentWorklist implements Courses {
 
     private void displayFourthYearOptions() {
         System.out.println("Please select from the following fourth year courses:");
+        for (int c = 0; c < fourthYearCourses.getCourses().size(); c++) {
+            System.out.println("\t" + (c + 1) + " -> " + fourthYearCourses.getCourses().get(c).getCourseName());
+        }
     }
 
     private void takeAddRequest(CourseCatalogue year) {

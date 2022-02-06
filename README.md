@@ -8,8 +8,6 @@
 - save your course worklist and check for missing pre-requisites
 - visualize a course's requirements
 - visualize the ***children*** of a pre-requisite course
-
-![UBC's beautiful logo](/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/the-university-of-british-columbia-ubc-vector-logo.png)
  
  >This project is intended for UBC Science students to use when figuring out their
  course worklists - which can prove to be quite the feat! This project is of interest to me,
