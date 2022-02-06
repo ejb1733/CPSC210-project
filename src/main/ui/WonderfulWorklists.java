@@ -6,8 +6,8 @@ import model.Worklist;
 
 import java.util.Scanner;
 
-// Student Worklist Program
-public class StudentWorklist implements Courses {
+// UI methods for UBC WonderfulWorklists
+public class WonderfulWorklists implements Courses {
     private CourseCatalogue firstYearCourses;
     private CourseCatalogue secondYearCourses;
     private CourseCatalogue thirdYearCourses;
@@ -18,7 +18,7 @@ public class StudentWorklist implements Courses {
     private Scanner input;
 
     // EFFECTS: runs the program!
-    public StudentWorklist() {
+    public WonderfulWorklists() {
         runWorklist();
     }
 
@@ -46,7 +46,7 @@ public class StudentWorklist implements Courses {
 
     // EFFECTS: print a list of options to console
     private void menu() {
-        System.out.println("\nWelcome to UBC WorklistWonders!");
+        System.out.println("\nWelcome to UBC WonderfulWorklists!");
         System.out.println("\nPlease select from the following options:");
         System.out.println("\tN -> Create a New Worklist");
         // System.out.println("\tR -> Register a Worklist");
