@@ -49,7 +49,7 @@ public class StudentWorklist implements Courses {
         System.out.println("\nWelcome to UBC WorklistWonders!");
         System.out.println("\nPlease select from the following options:");
         System.out.println("\tN -> Create a New Worklist");
-        System.out.println("\tR -> Register a Worklist");
+        // System.out.println("\tR -> Register a Worklist");
         System.out.println("\tQ -> Quit");
     }
 
@@ -67,7 +67,7 @@ public class StudentWorklist implements Courses {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes CourseCatalogues
+    // EFFECTS: initializes CourseCatalogues and a scanner
     private void init() {
         firstYearCourses = new CourseCatalogue("First Year Courses", firstYears);
         secondYearCourses = new CourseCatalogue("Second Year Courses", secondYears);
@@ -77,22 +77,25 @@ public class StudentWorklist implements Courses {
         input.useDelimiter("\n");
     }
 
-    // TODO
+    // MODIFIES: this
+    // EFFECTS: executes helper methods
     private void createWorklist() {
         printWorklistOptions(this.worklist.getWorklistName());
         takeInput();
         addMore();
     }
 
+    // EFFECTS: takes the student's input for their worklist name
     private void takeName() {
         System.out.println("Please enter a name for your new worklist:");
         Scanner inputName = new Scanner(System.in);
         String name = inputName.nextLine();
         Worklist studentWorkList = new Worklist(name);
-        System.out.println("Your worklist - " + studentWorkList.getWorklistName() + " - has been created!");
         this.worklist = studentWorkList;
+        System.out.println("Your worklist - " + studentWorkList.getWorklistName() + " - has been created!");
     }
 
+    // EFFECTS: prints a list of course catalogues to choose from
     private void printWorklistOptions(String name) {
         System.out.println("\nTo add courses to " + name + ", please select from the following:");
         System.out.println("\t1 -> add first year courses");
@@ -101,6 +104,7 @@ public class StudentWorklist implements Courses {
         System.out.println("\t4 -> Add fourth year courses");
     }
 
+    // EFFECTS: registers the input of a student's desired course catalogue
     private void takeInput() {
         Scanner inputInt = new Scanner(System.in);
         int num = inputInt.nextInt();
@@ -119,6 +123,7 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // EFFECTS: displays first year course catalogue
     private void displayFirstYearOptions() {
         System.out.println("\nPlease select from the following first year courses:");
         for (int c = 0; c < firstYearCourses.getCourses().size(); c++) {
@@ -126,6 +131,7 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // EFFECTS: displays second year course catalogue
     private void displaySecondYearOptions() {
         System.out.println("Please select from the following second year courses:");
         for (int c = 0; c < secondYearCourses.getCourses().size(); c++) {
@@ -133,6 +139,7 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // EFFECTS: displays third year course catalogue
     private void displayThirdYearOptions() {
         System.out.println("Please select from the following third year courses:");
         for (int c = 0; c < thirdYearCourses.getCourses().size(); c++) {
@@ -140,6 +147,7 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // EFFECTS: displays fourth year course catalogue
     private void displayFourthYearOptions() {
         System.out.println("Please select from the following fourth year courses:");
         for (int c = 0; c < fourthYearCourses.getCourses().size(); c++) {
@@ -147,6 +155,8 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: takes a user's course choice and adds it to their worklist
     private void takeAddRequest(CourseCatalogue year) {
         Scanner inputInt = new Scanner(System.in);
         int num = inputInt.nextInt();
@@ -157,6 +167,8 @@ public class StudentWorklist implements Courses {
         }
     }
 
+    // EFFECTS: takes user input for if they want to add more courses or exit to the menu.
+    //          If they choose to exit to the menu, their worklist full of courses will be displayed.
     private void addMore() {
         System.out.println("\nWould you like to add more courses?");
         System.out.println("\tY -> Add more courses");

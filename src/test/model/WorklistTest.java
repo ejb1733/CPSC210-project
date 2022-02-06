@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// tests for the Worklist class
 public class WorklistTest implements Courses {
 
     @BeforeEach
@@ -14,7 +15,7 @@ public class WorklistTest implements Courses {
     }
 
     @Test
-    void addCourseTest() {
+    void addRemoveCourseTest() {
         Worklist testWL = new Worklist("2021W2");
 
         testWL.addCourse(cpsc210);
@@ -25,6 +26,11 @@ public class WorklistTest implements Courses {
 
         testWL.addCourse(cpsc310);
         assertEquals(2, testWL.getWorklistSize());
+
+        testWL.removeCourse(cpsc210);
+        assertEquals(1, testWL.getWorklistSize());
+
+        assertEquals("CPSC 310", testWL.getWorklistEntries().get(0).getCourseName());
     }
 
     @Test

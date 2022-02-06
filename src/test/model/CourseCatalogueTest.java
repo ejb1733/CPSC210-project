@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// tests for the CourseCatalogue class
 public class CourseCatalogueTest implements Courses {
 
     private CourseCatalogue firstYear;

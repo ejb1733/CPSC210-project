@@ -16,11 +16,10 @@ public class Worklist {
 
     // TODO
     // EFFECTS: returns true if worklist has no missing pre-requisites
-    public boolean checkWorklist() {
+/*    public boolean checkWorklist() {
         return false; // stub
-    }
+    }*/
 
-    // TODO
     // REQUIRES: course given is a real course
     // MODIFIES: this
     // EFFECTS: adds course to worklist
@@ -34,7 +33,6 @@ public class Worklist {
         }
     }
 
-    // TODO
     // REQUIRES: course given is a real course
     // MODIFIES: this
     // EFFECTS: removes course from worklist
