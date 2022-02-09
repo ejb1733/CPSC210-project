@@ -17,11 +17,6 @@ public class CourseCatalogue {
         this.courses = courses;
     }
 
-    // EFFECTS: returns a course catalogue's title
-    public String getCatalogueTitle() {
-        return this.title;
-    }
-
     // EFFECTS: returns the list of courses in a course catalogue
     public ArrayList<Course> getCourses() {
         return this.courses;

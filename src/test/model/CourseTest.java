@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // tests for the Courses class
-public class CourseTest implements Courses {
+public class CourseTest extends Courses {
 
     @BeforeEach
     void runBefore() {

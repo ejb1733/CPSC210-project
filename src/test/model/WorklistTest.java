@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // tests for the Worklist class
-public class WorklistTest implements Courses {
+public class WorklistTest extends Courses {
 
     @BeforeEach
     void runBefore() {

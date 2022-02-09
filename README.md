@@ -6,6 +6,7 @@
 <center>Below are some features of the program:</center>
 
 - create, and name, your very own worklist!
+- create your own courses
 - add first to fourth year UBC CPSC courses to your worklist
 - view your completed worklist and all its courses
 
@@ -30,3 +31,4 @@ This project is based off the courses listed at https://www.cs.ubc.ca/prerequisi
 - As a user, I'd like to be able to name my worklist.
 - As a user, I want to be notified when a course I try to add is already in my worklist.
 - As a user, I want to see what's in my worklist after I've added my courses.
+- As a user, I'd like to be able to add more courses through console interaction.

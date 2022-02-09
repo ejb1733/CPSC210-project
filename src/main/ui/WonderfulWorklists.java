@@ -1,13 +1,15 @@
 package ui;
 
+import model.Course;
 import model.CourseCatalogue;
 import model.Courses;
 import model.Worklist;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // UI methods for UBC WonderfulWorklists
-public class WonderfulWorklists implements Courses {
+public class WonderfulWorklists extends Courses {
     private CourseCatalogue firstYearCourses;
     private CourseCatalogue secondYearCourses;
     private CourseCatalogue thirdYearCourses;
@@ -16,6 +18,8 @@ public class WonderfulWorklists implements Courses {
     private Worklist worklist;
 
     private Scanner input;
+
+    private final ArrayList<Course> newCoursePrereqs = new ArrayList<>();
 
     // EFFECTS: runs the program!
     public WonderfulWorklists() {
@@ -48,9 +52,11 @@ public class WonderfulWorklists implements Courses {
     private void menu() {
         System.out.println("\nWelcome to UBC WonderfulWorklists!");
         System.out.println("\nPlease select from the following options:");
-        System.out.println("\tN -> Create a New Worklist");
+        System.out.println("\n\tN -> Create a New Worklist");
+        System.out.println("\tC -> Create a New Course");
         // System.out.println("\tR -> Register a Worklist");
-        System.out.println("\tQ -> Quit");
+        System.out.println("\n\tQ -> Quit");
+        System.out.println();
     }
 
     // MODIFIES: this
@@ -59,8 +65,8 @@ public class WonderfulWorklists implements Courses {
         if (command.equals("n")) {
             takeName();
             createWorklist();
-        } else if (command.equals("r")) {
-            registerWorklist();
+        } else if (command.equals("c")) {
+            createNewCourse();
         } else {
             System.out.println("Please choose from a selection above");
         }
@@ -98,10 +104,7 @@ public class WonderfulWorklists implements Courses {
     // EFFECTS: prints a list of course catalogues to choose from
     private void printWorklistOptions(String name) {
         System.out.println("\nTo add courses to " + name + ", please select from the following:");
-        System.out.println("\t1 -> add first year courses");
-        System.out.println("\t2 -> add second year courses");
-        System.out.println("\t3 -> add third year courses");
-        System.out.println("\t4 -> Add fourth year courses");
+        printOptions();
     }
 
     // EFFECTS: registers the input of a student's desired course catalogue
@@ -186,10 +189,96 @@ public class WonderfulWorklists implements Courses {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new course for the user. It has a custom name and list of pre-requisites.
+    private void createNewCourse() {
+        System.out.println("\nWhat would you like to name your course?");
+        String name = input.next();
+        System.out.println("\nWould you like to give your course pre-requisites?");
+        System.out.println("\tY -> add pre-requisites");
+        System.out.println("\tN -> no pre-requisites");
+        String cmd = input.next();
+        cmd = cmd.toLowerCase();
+        Course newCourse;
+        if (cmd.equals("y")) {
+            newCoursePrereqs.addAll(addPrereqs());
+            newCourse = new Course(name, newCoursePrereqs);
+        } else {
+            newCourse = new Course(name, noPrereqs);
+        }
+        selectCourseYear().add(newCourse);
+        System.out.println("Your course - " + name + " - has been created successfully! Try adding it to a worklist.");
+    }
 
+    // MODIFIES: this
+    // EFFECTS: returns selected pre-requisites for new course.
+    private ArrayList<Course> addPrereqs() {
+        System.out.println("What year can you find this pre-req in?");
+        printOptions();
+        int year = input.nextInt();
+        if (year == 1) {
+            displayFirstYearOptions();
+            return takeAddRequestForPrereqs(firstYearCourses);
+        } else if (year == 2) {
+            displaySecondYearOptions();
+            return takeAddRequestForPrereqs(secondYearCourses);
+        } else if (year == 3) {
+            displayThirdYearOptions();
+            return takeAddRequestForPrereqs(thirdYearCourses);
+        } else if (year == 4) {
+            displayFourthYearOptions();
+            return takeAddRequestForPrereqs(fourthYearCourses);
+        }
+        return null;
+    }
 
-    private void registerWorklist() {
+    // MODIFIES: this
+    // EFFECTS: takes a user's course choice and adds it to their worklist
+    private ArrayList<Course> takeAddRequestForPrereqs(CourseCatalogue year) {
+        ArrayList<Course> addList = new ArrayList<>();
+        Scanner inputInt = new Scanner(System.in);
+        int num = inputInt.nextInt();
+        for (int i = 0; i < year.getCourses().size(); i++) {
+            if (num - 1 == i) {
+                addList.add(year.getCourses().get(i));
+            }
+        }
+        System.out.println("Would you like to add more pre-requisites?");
+        System.out.println("\tY -> add more pre-requisites");
+        System.out.println("\tN -> no more pre-requisites");
+        String answer = input.next();
+        if (answer.equals("y")) {
+            addPrereqs();
+        }
+        return addList;
+    }
 
+    // EFFECTS: returns the user's selected year for their new course to be classified as.
+    private ArrayList<Course> selectCourseYear() {
+        System.out.println("\nWhat year would you like your course to be listed as?");
+        printOptions();
+        int year = input.nextInt();
+        if (year == 1) {
+            return firstYears;
+        } else if (year == 2) {
+            return secondYears;
+        } else if (year == 3) {
+            return thirdYears;
+        } else if (year == 4) {
+            return fourthYears;
+        } else {
+            System.out.println("Please enter a valid entry");
+            selectCourseYear();
+        }
+        return null;
+    }
+
+    // EFFECTS: prints year options to console
+    private void printOptions() {
+        System.out.println("\t1 -> first year");
+        System.out.println("\t2 -> second year");
+        System.out.println("\t3 -> third year");
+        System.out.println("\t4 -> fourth year");
     }
 
 }
