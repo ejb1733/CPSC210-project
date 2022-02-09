@@ -31,4 +31,4 @@ This project is based off the courses listed at https://www.cs.ubc.ca/prerequisi
 - As a user, I'd like to be able to name my worklist.
 - As a user, I want to be notified when a course I try to add is already in my worklist.
 - As a user, I want to see what's in my worklist after I've added my courses.
-- As a user, I'd like to be able to add more courses through console interaction.
+- As a user, I'd like to be able to create custom courses through console interaction.
