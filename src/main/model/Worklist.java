@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Worklist {
     private String name;
     private ArrayList<Course> worklist;
+    private ArrayList<Worklist> worklistArrayList;
 
     // EFFECTS: constructs an empty worklist that a student has made with a custom name
     public Worklist(String name) {
@@ -25,11 +26,10 @@ public class Worklist {
     // EFFECTS: adds course to worklist
     public void addCourse(Course course) {
         if (this.worklist.contains(course)) {
-            System.out.println("This course cannot be added, as it's already in your worklist!");
+            System.out.println(course.getCourseName() + " cannot be added, as it's already in your worklist!");
         } else {
             this.worklist.add(course);
-            System.out.println("Successfully added " + course.getCourseName()
-                    + " to your worklist " + getWorklistName());
+            System.out.println(course.getCourseName() + " has been successfully added to " + getWorklistName());
         }
     }
 
@@ -37,7 +37,13 @@ public class Worklist {
     // MODIFIES: this
     // EFFECTS: removes course from worklist
     public void removeCourse(Course course) {
-        this.worklist.remove(course);
+        if (this.worklist.isEmpty()) {
+            System.out.println("You can't remove any courses, because your worklist is empty!");
+        } else {
+            System.out.println(course.getCourseName() + " has been successfully removed from "
+                    + getWorklistName());
+            this.worklist.remove(course);
+        }
     }
 
     // EFFECTS: returns the size of a worklist
@@ -53,6 +59,22 @@ public class Worklist {
     // EFFECTS: returns a worklists' course entries
     public ArrayList<Course> getWorklistEntries() {
         return this.worklist;
+    }
+
+    // EFFECTS: returns a list of worklists
+    public ArrayList<Worklist> getWorklists() {
+        return this.worklistArrayList;
+    }
+
+    public void displayWorklists() {
+        if (this.worklistArrayList.isEmpty()) {
+            System.out.println("You've got no worklists, silly!");
+        } else {
+            System.out.println("Please select from your worklists:");
+            for (int i = 1; i <= this.worklistArrayList.size(); i++) {
+                System.out.println(i + worklistArrayList.get(i).getWorklistName());
+            }
+        }
     }
 
 }

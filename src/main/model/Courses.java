@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-// Interface that defines fields for all the CPSC courses
+// Abstract class that defines fields for all the CPSC courses
 // given from the website in the readme
 public abstract class Courses {
 

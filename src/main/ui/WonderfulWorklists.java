@@ -16,6 +16,7 @@ public class WonderfulWorklists extends Courses {
     private CourseCatalogue fourthYearCourses;
 
     private Worklist worklist;
+    private ArrayList<Worklist> wll = new ArrayList<>();
 
     private Scanner input;
 
@@ -54,6 +55,7 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\nPlease select from the following options:");
         System.out.println("\n\tN -> Create a New Worklist");
         System.out.println("\tC -> Create a New Course");
+        System.out.println("\tE -> Edit your Worklists");
         // System.out.println("\tR -> Register a Worklist");
         System.out.println("\n\tQ -> Quit");
         System.out.println();
@@ -67,6 +69,8 @@ public class WonderfulWorklists extends Courses {
             createWorklist();
         } else if (command.equals("c")) {
             createNewCourse();
+        } else if (command.equals("e")) {
+            editWorklists();
         } else {
             System.out.println("Please choose from a selection above");
         }
@@ -89,6 +93,7 @@ public class WonderfulWorklists extends Courses {
         printWorklistOptions(this.worklist.getWorklistName());
         takeInput();
         addMore();
+        this.wll.add(this.worklist);
     }
 
     // EFFECTS: takes the student's input for their worklist name
@@ -179,13 +184,24 @@ public class WonderfulWorklists extends Courses {
         String command = input.next();
         command = command.toLowerCase();
         if (command.equals("y")) {
-            createWorklist();
+            printWorklistOptions(this.worklist.getWorklistName());
+            takeInput();
+            addMore();
         } else if (command.equals("n")) {
-            System.out.println("\n" + this.worklist.getWorklistName());
-            for (int i = 0; i < this.worklist.getWorklistSize(); i++) {
-                System.out.println("\t- " + worklist.getWorklistEntries().get(worklist.getWorklistSize()
-                        - 1 - i).getCourseName());
-            }
+            this.viewWorklist(this.worklist);
+        }
+    }
+
+    private void addCourses(Worklist w) {
+        printWorklistOptions(w.getWorklistName());
+        takeInput();
+    }
+
+    private void viewWorklist(Worklist w) {
+        System.out.println("\n" + w.getWorklistName());
+        for (int i = 0; i < w.getWorklistSize(); i++) {
+            System.out.println("\t- " + w.getWorklistEntries().get(w.getWorklistSize()
+                    - 1 - i).getCourseName());
         }
     }
 
@@ -271,6 +287,55 @@ public class WonderfulWorklists extends Courses {
             selectCourseYear();
         }
         return null;
+    }
+
+    public void displayWorklists() {
+        if (this.wll.isEmpty()) {
+            System.out.println("You've got no worklists, silly!");
+            runWorklist();
+        } else {
+            System.out.println("Please select from your worklists:");
+            for (int i = 1; i <= this.wll.size(); i++) {
+                System.out.println(i + " -> " + wll.get(i - 1).getWorklistName());
+            }
+        }
+    }
+
+    private void editWorklists() {
+        displayWorklists();
+        int choice = input.nextInt();
+        Worklist selected;
+        for (int i = 0; i < wll.size(); i++) {
+            if (choice - 1 == i) {
+                selected = wll.get(i);
+                editWorklistOptions(selected);
+            }
+        }
+    }
+
+    private void editWorklistOptions(Worklist w) {
+        System.out.println("\nWhat would you like to do with " + w.getWorklistName() + "?");
+        System.out.println("\t1 -> View the courses in " + w.getWorklistName());
+        System.out.println("\t2 -> Add a Course to " + w.getWorklistName());
+        System.out.println("\t3 -> Remove a Course from " + w.getWorklistName());
+        int choice = input.nextInt();
+        if (choice == 1) {
+            viewWorklist(w);
+        } else if (choice == 2) {
+            addCourses(w);
+        } else if (choice == 3) {
+            removeCourses(w);
+        }
+    }
+
+    private void removeCourses(Worklist w) {
+        System.out.println("Please select a course to remove:");
+        for (int i = 0; i < w.getWorklistSize(); i++) {
+            System.out.println("\t" + (i + 1) + " -> "
+                    + w.getWorklistEntries().get(i).getCourseName());
+        }
+        int selection = input.nextInt();
+        w.removeCourse(w.getWorklistEntries().get(selection - 1));
     }
 
     // EFFECTS: prints year options to console

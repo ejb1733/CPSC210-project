@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-// Abstraction for Course which has a name and list of pre-requisites
+// a Course which has a name and list of pre-requisites
 public class Course {
     private final String name;
     private final ArrayList<Course> prereqs;
