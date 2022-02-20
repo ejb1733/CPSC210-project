@@ -29,6 +29,8 @@ This project is based off the courses listed at https://www.cs.ubc.ca/prerequisi
 
 - As a user, I'd like to be able to add Courses to my course worklist.
 - As a user, I'd like to be able to name my worklist.
-- As a user, I'd like to be able to create custom courses through console interaction.
-- As a user, I'd like to be able to remove courses form my worklist.
+- As a user, I'd like to be able to create custom course.
 - As a user, I'd like to be able to create multiple worklists.
+- As a user, I'd like to be able to edit my worklists by adding or removing courses.
+- As a user, I want to be able to save my Worklists and custom courses to a file.
+- As a user, I want to be able to load my Worklists and custom courses from a file.
