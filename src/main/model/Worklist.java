@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // Worklist abstraction that represents a student's worklist.
 // A worklist has a name and list of courses that a student has chosen.
-public class Worklist {
+public class Worklist implements Writable {
     private String name;
     private ArrayList<Course> worklist;
     private ArrayList<Worklist> worklistArrayList;
@@ -77,4 +81,22 @@ public class Worklist {
         this.name = setName;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("courses", coursesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray coursesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course c : worklist) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
+    }
 }

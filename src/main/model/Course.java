@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // a Course which has a name and list of pre-requisites
-public class Course {
+public class Course implements Writable {
     private final String name;
     private final ArrayList<Course> prereqs;
 
@@ -22,5 +25,13 @@ public class Course {
     // EFFECTS: returns a course's pre-requisites
     public ArrayList<Course> getPrereqs() {
         return this.prereqs;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("prereqs", prereqs);
+        return json;
     }
 }

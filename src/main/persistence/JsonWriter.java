@@ -1,11 +1,13 @@
 package persistence;
 
+import model.Worklist;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Represents a writer that writes JSON representation of worklist to file
 public class JsonWriter {
 
     private static final int TAB = 4;
@@ -24,12 +26,12 @@ public class JsonWriter {
         writer = new PrintWriter(new File(destination));
     }
 
-//    // MODIFIES: this
-//    // EFFECTS: writes JSON representation of workroom to file
-//    public void write(WonderfulWork wr) {
-//        JSONObject json = wr.toJson();
-//        saveToFile(json.toString(TAB));
-//    }
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of workroom to file
+    public void write(Worklist wl) {
+        JSONObject json = wl.toJson();
+        saveToFile(json.toString(TAB));
+    }
 
     // MODIFIES: this
     // EFFECTS: closes writer
