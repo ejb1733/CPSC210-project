@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.EmptyWorklistException;
 import model.Course;
 import model.CourseCatalogue;
 import model.Courses;
@@ -318,24 +319,42 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\t1 -> View the courses in " + w.getWorklistName());
         System.out.println("\t2 -> Add a Course to " + w.getWorklistName());
         System.out.println("\t3 -> Remove a Course from " + w.getWorklistName());
+        System.out.println("\t4 -> Edit " + w.getWorklistName() + "'s name");
         int choice = input.nextInt();
         if (choice == 1) {
             viewWorklist(w);
         } else if (choice == 2) {
             addCourses(w);
         } else if (choice == 3) {
-            removeCourses(w);
+            try {
+                removeCourses(w);
+            } catch (EmptyWorklistException e) {
+                System.out.println("Cannot remove any courses, as " + w.getWorklistName() + " is empty!");
+            }
+        } else if (choice == 4) {
+            modifyName(w);
         }
     }
 
-    private void removeCourses(Worklist w) {
-        System.out.println("Please select a course to remove:");
-        for (int i = 0; i < w.getWorklistSize(); i++) {
-            System.out.println("\t" + (i + 1) + " -> "
-                    + w.getWorklistEntries().get(i).getCourseName());
+    private void removeCourses(Worklist w) throws EmptyWorklistException {
+        if (w.getWorklistSize() == 0) {
+            throw new EmptyWorklistException();
+        } else {
+            System.out.println("Please select a course to remove:");
+            for (int i = 0; i < w.getWorklistSize(); i++) {
+                System.out.println("\t" + (i + 1) + " -> "
+                        + w.getWorklistEntries().get(i).getCourseName());
+            }
+            int selection = input.nextInt();
+            w.removeCourse(w.getWorklistEntries().get(selection - 1));
         }
-        int selection = input.nextInt();
-        w.removeCourse(w.getWorklistEntries().get(selection - 1));
+    }
+
+    private void modifyName(Worklist w) {
+        System.out.println("What would you like to change " + w.getWorklistName() + "'s name to?");
+        String newName = input.next();
+        this.worklist.setWorklistName(newName);
+        System.out.println("Successfully changed your worklists' name to " + w.getWorklistName() + "!");
     }
 
     // EFFECTS: prints year options to console
@@ -344,6 +363,10 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\t2 -> second year");
         System.out.println("\t3 -> third year");
         System.out.println("\t4 -> fourth year");
+    }
+
+    public ArrayList<Worklist> getWorklistList() {
+        return this.wll;
     }
 
 }

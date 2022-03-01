@@ -37,13 +37,9 @@ public class Worklist {
     // MODIFIES: this
     // EFFECTS: removes course from worklist
     public void removeCourse(Course course) {
-        if (this.worklist.isEmpty()) {
-            System.out.println("You can't remove any courses, because your worklist is empty!");
-        } else {
-            System.out.println(course.getCourseName() + " has been successfully removed from "
-                    + getWorklistName());
-            this.worklist.remove(course);
-        }
+        System.out.println(course.getCourseName() + " has been successfully removed from "
+                + getWorklistName());
+        this.worklist.remove(course);
     }
 
     // EFFECTS: returns the size of a worklist
@@ -75,6 +71,10 @@ public class Worklist {
                 System.out.println(i + worklistArrayList.get(i).getWorklistName());
             }
         }
+    }
+
+    public void setWorklistName(String setName) {
+        this.name = setName;
     }
 
 }
