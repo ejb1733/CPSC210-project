@@ -8,6 +8,7 @@ import model.Worklist;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -68,6 +69,7 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\tE -> Edit your Worklists");
         System.out.println("");
         System.out.println("\tL -> Load a Worklist");
+        System.out.println("\tS -> Save a Worklist");
         // System.out.println("\tR -> Register a Worklist");
         System.out.println("\n\tQ -> Quit");
         System.out.println();
@@ -84,7 +86,9 @@ public class WonderfulWorklists extends Courses {
         } else if (command.equals("e")) {
             editWorklists();
         } else if (command.equals("l")) {
-            loadWorkRoom();
+            loadWorklist();
+        } else if (command.equals("s")) {
+            selectWorklistToSave();
         } else {
             System.out.println("Please choose from a selection above");
         }
@@ -380,7 +384,7 @@ public class WonderfulWorklists extends Courses {
 
     // MODIFIES: this
     // EFFECTS: loads workroom from file
-    private void loadWorkRoom() {
+    private void loadWorklist() {
         try {
             Worklist wl = jsonReader.read();
             wll.add(wl);
@@ -388,6 +392,30 @@ public class WonderfulWorklists extends Courses {
             System.out.println("Loaded " + wll.get(0).getWorklistName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    public void selectWorklistToSave() {
+        displayWorklists();
+        int choice = input.nextInt();
+        Worklist selected;
+        for (int i = 0; i < wll.size(); i++) {
+            if (choice - 1 == i) {
+                selected = wll.get(i);
+                saveWorklist(selected);
+            }
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveWorklist(Worklist w) {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(w);
+            jsonWriter.close();
+            System.out.println("Saved " + w.getWorklistName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
