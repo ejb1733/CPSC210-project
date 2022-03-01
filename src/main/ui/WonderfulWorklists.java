@@ -5,16 +5,23 @@ import model.Course;
 import model.CourseCatalogue;
 import model.Courses;
 import model.Worklist;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // UI methods for UBC WonderfulWorklists
 public class WonderfulWorklists extends Courses {
+    private static final String JSON_STORE = "./data/hmm.json";
     private CourseCatalogue firstYearCourses;
     private CourseCatalogue secondYearCourses;
     private CourseCatalogue thirdYearCourses;
     private CourseCatalogue fourthYearCourses;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     private Worklist worklist;
     private ArrayList<Worklist> wll = new ArrayList<>();
@@ -25,6 +32,8 @@ public class WonderfulWorklists extends Courses {
 
     // EFFECTS: runs the program!
     public WonderfulWorklists() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runWorklist();
     }
 
@@ -57,6 +66,8 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\n\tN -> Create a New Worklist");
         System.out.println("\tC -> Create a New Course");
         System.out.println("\tE -> Edit your Worklists");
+        System.out.println("");
+        System.out.println("\tL -> Load a Worklist");
         // System.out.println("\tR -> Register a Worklist");
         System.out.println("\n\tQ -> Quit");
         System.out.println();
@@ -72,6 +83,8 @@ public class WonderfulWorklists extends Courses {
             createNewCourse();
         } else if (command.equals("e")) {
             editWorklists();
+        } else if (command.equals("l")) {
+            loadWorkRoom();
         } else {
             System.out.println("Please choose from a selection above");
         }
@@ -365,8 +378,17 @@ public class WonderfulWorklists extends Courses {
         System.out.println("\t4 -> fourth year");
     }
 
-    public ArrayList<Worklist> getWorklistList() {
-        return this.wll;
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            Worklist wl = jsonReader.read();
+            wll.add(wl);
+            System.out.println("");
+            System.out.println("Loaded " + wll.get(0).getWorklistName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }

@@ -1,0 +1,13 @@
+{
+  "courses": [
+    {
+      "name": "CPSC 210",
+      "prereqs": "hmm..."
+    },
+    {
+      "name": "CPSC 121",
+      "prereqs": "we'll worry about that later!"
+    }
+  ],
+  "name": "2021TestW1"
+}
