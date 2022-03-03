@@ -1,6 +1,5 @@
 package ui;
 
-import exceptions.EmptyWorklistException;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -265,11 +264,7 @@ public class WonderfulWorklists extends Courses {
             printWorklistOptions(w.getWorklistName());
             takeInput(w);
         } else if (choice == 3) {
-            try {
-                removeCourses(w);
-            } catch (EmptyWorklistException e) {
-                System.out.println("Cannot remove any courses, as " + w.getWorklistName() + " is empty!");
-            }
+            removeCourses(w);
         } else if (choice == 4) {
             modifyName(w);
         } else if (choice == 5) {
@@ -279,9 +274,9 @@ public class WonderfulWorklists extends Courses {
 
     // MODIFIES: this, w
     // EFFECTS: removes a Worklist w from the WorklistList
-    private void removeCourses(Worklist w) throws EmptyWorklistException {
+    private void removeCourses(Worklist w) {
         if (w.getWorklistSize() == 0) {
-            throw new EmptyWorklistException();
+            System.out.println("Cannot remove courses because your worklist is empty!");
         } else {
             System.out.println("Please select a course to remove:");
             for (int i = 0; i < w.getWorklistSize(); i++) {
