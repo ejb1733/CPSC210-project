@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
 // Abstract class that defines fields for all the CPSC courses
 // given from the website in the readme
@@ -76,5 +77,62 @@ public abstract class Courses {
     protected ArrayList<Course> fourthYears = new ArrayList<>(Arrays.asList(cpsc402, cpsc404, cpsc406, cpsc410, cpsc411,
             cpsc415, cpsc416, cpsc417, cpsc418, cpsc420, cpsc421, cpsc422, cpsc424, cpsc425, cpsc426, cpsc427, cpsc444,
             cpsc445));
+
+    // EFFECTS: print a list of options to console
+    public void menu() {
+        System.out.println("\nWelcome to UBC WonderfulWorklists!");
+        System.out.println("\nPlease select from the following options:");
+        System.out.println("\n\tN -> Create a New Worklist");
+        System.out.println("\tC -> Create a New Course");
+        System.out.println("\tE -> Edit your Worklists");
+        System.out.println("");
+        System.out.println("\tL -> Load your Worklists");
+        System.out.println("\tS -> Save your Worklists");
+        // System.out.println("\tR -> Register a Worklist");
+        System.out.println("\n\tQ -> Quit");
+        System.out.println();
+    }
+
+    // EFFECTS: prints year options to console
+    public void printOptions() {
+        System.out.println("\t1 -> first year");
+        System.out.println("\t2 -> second year");
+        System.out.println("\t3 -> third year");
+        System.out.println("\t4 -> fourth year");
+    }
+
+    // EFFECTS: prints out options for how one can edit a worklist
+    public void editOptions(Worklist w) {
+        System.out.println("\nWhat would you like to do with " + w.getWorklistName() + "?");
+        System.out.println("\t1 -> View courses ");
+        System.out.println("\t2 -> Add a course ");
+        System.out.println("\t3 -> Remove a course");
+        System.out.println("\t4 -> Edit " + w.getWorklistName() + "'s name");
+        System.out.println("\t5 -> Delete this Worklist");
+    }
+
+    // EFFECTS: displays given year's course catalogue
+    public void displayYearOptions(int year) {
+        String whichYear = null;
+        ArrayList<Course> coursesInput = null;
+        if (year == 1) {
+            whichYear = "first";
+            coursesInput = firstYears;
+        } else if (year == 2) {
+            whichYear = "second";
+            coursesInput = secondYears;
+        } else if (year == 3) {
+            whichYear = "third";
+            coursesInput = thirdYears;
+        } else if (year == 4) {
+            whichYear = "fourth";
+            coursesInput = fourthYears;
+        }
+        System.out.println("Please select from the following " + whichYear + " year courses:");
+        for (int c = 0; c < coursesInput.size(); c++) {
+            System.out.println("\t" + (c + 1) + " - > " + coursesInput.get(c).getCourseName());
+        }
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Worklist;
+import model.WorklistList;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -28,8 +29,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
-    public void write(Worklist wl) {
-        JSONObject json = wl.toJson();
+    public void write(WorklistList wll) {
+        JSONObject json = wll.toJson();
         saveToFile(json.toString(TAB));
     }
 

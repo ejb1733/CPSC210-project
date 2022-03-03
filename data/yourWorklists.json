@@ -1,0 +1,72 @@
+{
+    "worklists": [
+        {
+            "courses": [
+                {
+                    "courseName": "CPSC 110",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 213",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 304",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 110",
+                    "prereqs": []
+                }
+            ],
+            "worklistName": "OK!"
+        },
+        {
+            "courses": [
+                {
+                    "courseName": "CPSC 110",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 445",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 320",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 314",
+                    "prereqs": [{
+                        "courseName": "CPSC 221",
+                        "prereqs": [
+                            {
+                                "courseName": "CPSC 121",
+                                "prereqs": [{
+                                    "courseName": "CPSC 110",
+                                    "prereqs": []
+                                }]
+                            },
+                            {
+                                "courseName": "CPSC 210",
+                                "prereqs": [{
+                                    "courseName": "CPSC 110",
+                                    "prereqs": []
+                                }]
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "courseName": "Inna's Course",
+                    "prereqs": [{
+                        "courseName": "CPSC 110",
+                        "prereqs": []
+                    }]
+                }
+            ],
+            "worklistName": "Inna's Worklist"
+        }
+    ],
+    "name": "WonderfulWorklists"
+}

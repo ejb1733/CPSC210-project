@@ -30,7 +30,7 @@ public class Course implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
+        json.put("courseName", name);
         json.put("prereqs", prereqs);
         return json;
     }

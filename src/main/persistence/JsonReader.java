@@ -2,6 +2,7 @@ package persistence;
 
 import model.Course;
 import model.Worklist;
+import model.WorklistList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
     private String source;
+    private ArrayList<Course> emptyForNow = new ArrayList<>();
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -23,10 +25,10 @@ public class JsonReader {
 
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public Worklist read() throws IOException {
+    public WorklistList read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseWorklist(jsonObject);
+        return parseWorklistList(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -40,31 +42,48 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
-    private Worklist parseWorklist(JSONObject jsonObject) {
+    // EFFECTS: parses WorklistList from JSON object and returns it
+    private WorklistList parseWorklistList(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Worklist wl = new Worklist(name);
-        addCourses(wl, jsonObject);
-        return wl;
+        WorklistList wll = new WorklistList(name);
+        addWorklists(wll, jsonObject);
+        return wll;
     }
 
-    // MODIFIES: wl
+    // MODIFIES: wll
     // EFFECTS: parses courses from JSON object and adds them to worklist
-    private void addCourses(Worklist wl, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("courses");
+    private void addWorklists(WorklistList wll, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("worklists");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addCourse(wl, nextThingy);
+            JSONObject nextWorklist = (JSONObject) json;
+            addWorklist(wll, nextWorklist);
         }
     }
 
-    // MODIFIES: wl
+    // MODIFIES: wll
     // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addCourse(Worklist wl, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
-        ArrayList<Course> emptyForNow = new ArrayList<>();
-        Course course = new Course(name, emptyForNow);
-        wl.addCourse(course);
+    private void addWorklist(WorklistList wll, JSONObject jsonObject) {
+        String name = jsonObject.getString("worklistName");
+        Worklist worklist = new Worklist(name);
+        addCourses(worklist, wll, jsonObject);
+        wll.add(worklist);
+    }
+
+    // MODIFIES: wll, worklist
+    // EFFECTS: parses courses from JSON object and adds them to worklist
+    private void addCourses(Worklist worklist, WorklistList wll, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("courses");
+        for (Object json : jsonArray) {
+            JSONObject nextCourse = (JSONObject) json;
+            addCourse(worklist, nextCourse);
+        }
+    }
+
+    // MODIFIES: worklist
+    private void addCourse(Worklist worklist, JSONObject jsonObject) {
+        String name = jsonObject.getString("courseName");
+        Course c = new Course(name, emptyForNow);
+        worklist.addCourse(c);
     }
 
 }

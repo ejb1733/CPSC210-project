@@ -3,6 +3,7 @@ package persistence;
 import model.Course;
 import model.Worklist;
 import model.Courses;
+import model.WorklistList;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -30,16 +31,16 @@ public class JsonWriterTest extends Courses {
     @Test
     void testWriterEmptyWorkroom() {
         try {
-            Worklist wl = new Worklist("Empty test worklist");
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorklist.json");
+            WorklistList wll = new WorklistList("Empty test worklistlist");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorklistList.json");
             writer.open();
-            writer.write(wl);
+            writer.write(wll);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorklist.json");
-            wl = reader.read();
-            assertEquals("Empty test worklist", wl.getWorklistName());
-            assertEquals(0, wl.getWorklistSize());
+            JsonReader reader = new JsonReader("./data/testWriterEmptyWorklistList.json");
+            wll = reader.read();
+            assertEquals("Empty test worklistlist", wll.getName());
+            assertEquals(0, wll.size());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -48,19 +49,24 @@ public class JsonWriterTest extends Courses {
     @Test
     void testWriterGeneralWorkroom() {
         try {
-            Worklist wl = new Worklist("Some general worklist");
+            WorklistList wll = new WorklistList("Some general worklist list");
+            Worklist wl = new Worklist("testWL1");
             wl.addCourse(cpsc210);
             wl.addCourse(cpsc121);
             wl.addCourse(cpsc445);
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorklist.json");
+            wll.add(wl);
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorklistList.json");
             writer.open();
-            writer.write(wl);
+            writer.write(wll);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorklist.json");
-            wl = reader.read();
-            assertEquals("Some general worklist", wl.getWorklistName());
-            ArrayList<Course> courses = wl.getWorklistEntries();
+            JsonReader reader = new JsonReader("./data/testWriterGeneralWorklistList.json");
+            wll = reader.read();
+            assertEquals("Some general worklist list", wll.getName());
+            ArrayList<Worklist> worklists = wll.getWll();
+            assertEquals(1, wll.size());
+
+            ArrayList<Course> courses = worklists.get(0).getWorklistEntries();
             assertEquals(3, courses.size());
 
         } catch (IOException e) {

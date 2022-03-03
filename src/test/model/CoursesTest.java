@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // tests for the Courses class
-public class CourseTest extends Courses {
+public class CoursesTest extends Courses {
 
     @Test
     void constructorTest() {

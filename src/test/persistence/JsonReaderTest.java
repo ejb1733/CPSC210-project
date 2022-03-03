@@ -3,6 +3,7 @@ package persistence;
 import model.Course;
 import model.Courses;
 import model.Worklist;
+import model.WorklistList;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class JsonReaderTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/heheheThisDoesNotExist.json");
         try {
-            Worklist wl = reader.read();
+            WorklistList wll = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -27,11 +28,11 @@ public class JsonReaderTest {
 
     @Test
     void testReaderEmptyWorklist() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorklist.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyWorklistList.json");
         try {
-            Worklist wl = reader.read();
-            assertEquals("An empty test worklist!", wl.getWorklistName());
-            assertEquals(0, wl.getWorklistSize());
+            WorklistList wll = reader.read();
+            assertEquals("This is an empty test save file!", wll.getName());
+            assertEquals(0, wll.size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -39,12 +40,16 @@ public class JsonReaderTest {
 
     @Test
     void testReaderGeneralWorklist() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorklist.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralWorklistList.json");
         try {
-            Worklist wl = reader.read();
-            assertEquals("A general test worklist!", wl.getWorklistName());
-            ArrayList<Course> courses = wl.getWorklistEntries();
-            assertEquals(2, courses.size());
+            WorklistList wll = reader.read();
+            assertEquals("A general test worklist!", wll.getName());
+            ArrayList<Worklist> worklists = wll.getWll();
+            assertEquals(2, worklists.size());
+
+            Worklist wl1 = wll.get(0);
+            assertEquals("testWL1", wl1.getWorklistName());
+            assertEquals(2, wl1.getWorklistSize());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

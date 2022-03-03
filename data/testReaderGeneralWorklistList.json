@@ -1,0 +1,37 @@
+{
+  "worklists": [
+    {
+      "courses": [
+        {
+          "courseName": "CPSC 210",
+          "prereqs": [{
+              "courseName": "CPSC 110",
+              "prereqs": []
+            }]
+        },
+        {
+          "courseName": "CPSC 121",
+          "prereqs": [{
+              "courseName": "CPSC 110",
+              "prereqs": []
+            }]
+          }
+      ],
+      "worklistName": "testWL1"
+    },
+    {
+      "courses": [
+        {
+          "courseName": "CPSC 110",
+          "prereqs": []
+        },
+        {
+          "courseName": "CPSC 121",
+          "prereqs": []
+        }
+      ],
+      "worklistName": "testWL2"
+    }
+  ],
+  "name": "A general test worklist!"
+}

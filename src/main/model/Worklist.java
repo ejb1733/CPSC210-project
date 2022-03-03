@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // Worklist abstraction that represents a student's worklist.
 // A worklist has a name and list of courses that a student has chosen.
@@ -18,12 +19,6 @@ public class Worklist implements Writable {
         this.name = name;
         this.worklist = new ArrayList<>();
     }
-
-    // TODO
-    // EFFECTS: returns true if worklist has no missing pre-requisites
-/*    public boolean checkWorklist() {
-        return false; // stub
-    }*/
 
     // REQUIRES: course given is a real course
     // MODIFIES: this
@@ -46,6 +41,18 @@ public class Worklist implements Writable {
         this.worklist.remove(course);
     }
 
+    // MODIFIES: this
+    // EFFECTS: takes a user's course choice and adds it to their worklist
+    public void takeAddRequest(ArrayList<Course> year) {
+        Scanner inputInt = new Scanner(System.in);
+        int num = inputInt.nextInt();
+        for (int i = 0; i < year.size(); i++) {
+            if (num - 1 == i) {
+                addCourse(year.get(num - 1));
+            }
+        }
+    }
+
     // EFFECTS: returns the size of a worklist
     public int getWorklistSize() {
         return this.worklist.size();
@@ -66,37 +73,26 @@ public class Worklist implements Writable {
         return this.worklistArrayList;
     }
 
-    public void displayWorklists() {
-        if (this.worklistArrayList.isEmpty()) {
-            System.out.println("You've got no worklists, silly!");
-        } else {
-            System.out.println("Please select from your worklists:");
-            for (int i = 1; i <= this.worklistArrayList.size(); i++) {
-                System.out.println(i + worklistArrayList.get(i).getWorklistName());
-            }
-        }
-    }
-
     public void setWorklistName(String setName) {
         this.name = setName;
     }
 
-    @Override
+
+
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
+        json.put("worklistName", this.name);
         json.put("courses", coursesToJson());
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray coursesToJson() {
+    // EFFECTS: returns courses from each worklist as a JSON array
+    public JSONArray coursesToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Course c : worklist) {
             jsonArray.put(c.toJson());
         }
-
         return jsonArray;
     }
 }

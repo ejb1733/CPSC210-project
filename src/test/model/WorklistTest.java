@@ -9,9 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // tests for the Worklist class
 public class WorklistTest extends Courses {
 
-    @BeforeEach
-    void runBefore() {
-
+    @Test
+    void testConstructor() {
+        Worklist testWL = new Worklist("Gregor's Worklist");
+        assertEquals("Gregor's Worklist", testWL.getWorklistName());
+        assertEquals(0, testWL.getWorklistSize());
     }
 
     @Test
