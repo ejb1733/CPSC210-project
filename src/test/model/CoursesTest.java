@@ -24,7 +24,7 @@ public class CoursesTest extends Courses {
         menu();
         printOptions();
         editOptions(testWL);
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 6; i++) {
             selectYearOptions(i);
         }
     }
