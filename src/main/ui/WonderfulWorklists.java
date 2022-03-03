@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 // UI methods for UBC WonderfulWorklists
 public class WonderfulWorklists extends Courses {
     private static final String JSON_STORE = "./data/yourWorklists.json";
@@ -116,15 +117,16 @@ public class WonderfulWorklists extends Courses {
     private void takeInput(Worklist w) {
         Scanner inputInt = new Scanner(System.in);
         int num = inputInt.nextInt();
-        displayYearOptions(num);
+        selectYearOptions(num);
+        int num2 = inputInt.nextInt();
         if (num == 1) {
-            w.takeAddRequest(firstYears);
+            w.takeAddRequest(firstYears, num2);
         } else if (num == 2) {
-            w.takeAddRequest(secondYears);
+            w.takeAddRequest(secondYears, num2);
         } else if (num == 3) {
-            w.takeAddRequest(thirdYears);
+            w.takeAddRequest(thirdYears, num2);
         } else if (num == 4) {
-            w.takeAddRequest(fourthYears);
+            w.takeAddRequest(fourthYears, num2);
         }
     }
 
@@ -143,11 +145,6 @@ public class WonderfulWorklists extends Courses {
         } else if (command.equals("n")) {
             this.viewWorklist(this.worklist);
         }
-    }
-
-    private void addCourses(Worklist w) {
-        printWorklistOptions(w.getWorklistName());
-        takeInput(w);
     }
 
     private void viewWorklist(Worklist w) {
@@ -186,16 +183,16 @@ public class WonderfulWorklists extends Courses {
         printOptions();
         int year = input.nextInt();
         if (year == 1) {
-            displayYearOptions(1);
+            selectYearOptions(1);
             return takeAddRequestForPrereqs(firstYears);
         } else if (year == 2) {
-            displayYearOptions(2);
+            selectYearOptions(2);
             return takeAddRequestForPrereqs(secondYears);
         } else if (year == 3) {
-            displayYearOptions(3);
+            selectYearOptions(3);
             return takeAddRequestForPrereqs(thirdYears);
         } else if (year == 4) {
-            displayYearOptions(4);
+            selectYearOptions(4);
             return takeAddRequestForPrereqs(fourthYears);
         }
         return null;
@@ -242,6 +239,7 @@ public class WonderfulWorklists extends Courses {
         return null;
     }
 
+    // EFFECTS: selects the worklist that a user enters and calls it in editWorklistOptions
     private void editWorklists() {
         if (wll.displayWorklists()) {
             runWorklist();
@@ -256,13 +254,16 @@ public class WonderfulWorklists extends Courses {
         }
     }
 
+    // MODIFIES: w
+    // EFFECTS: displays a user's options for how they'd like to edit their worklist
     private void editWorklistOptions(Worklist w) {
         editOptions(w);
         int choice = input.nextInt();
         if (choice == 1) {
             viewWorklist(w);
         } else if (choice == 2) {
-            addCourses(w);
+            printWorklistOptions(w.getWorklistName());
+            takeInput(w);
         } else if (choice == 3) {
             try {
                 removeCourses(w);
@@ -272,10 +273,12 @@ public class WonderfulWorklists extends Courses {
         } else if (choice == 4) {
             modifyName(w);
         } else if (choice == 5) {
-            deleteWorklist(w);
+            this.wll.removeWorklist(w);
         }
     }
 
+    // MODIFIES: this, w
+    // EFFECTS: removes a Worklist w from the WorklistList
     private void removeCourses(Worklist w) throws EmptyWorklistException {
         if (w.getWorklistSize() == 0) {
             throw new EmptyWorklistException();
@@ -290,10 +293,8 @@ public class WonderfulWorklists extends Courses {
         }
     }
 
-    private void deleteWorklist(Worklist w) {
-        this.wll.removeWorklist(w);
-    }
-
+    // MODIFIES: w
+    // EFFECTS: changes the name of w to the user's input
     private void modifyName(Worklist w) {
         System.out.println("What would you like to change " + w.getWorklistName() + "'s name to?");
         String newName = input.next();
@@ -320,7 +321,7 @@ public class WonderfulWorklists extends Courses {
             jsonWriter.open();
             jsonWriter.write(wll);
             jsonWriter.close();
-            System.out.println("Saved  (" + wll.size() + ") worklists to " + JSON_STORE);
+            System.out.println("Saved (" + wll.size() + ") worklists to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }

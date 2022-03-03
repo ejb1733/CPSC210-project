@@ -5,21 +5,25 @@ import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // tests for the Worklist class
 public class WorklistTest extends Courses {
+    Worklist testWL;
+
+    @BeforeEach
+    void runBefore() {
+        testWL = new Worklist("Gregor's Worklist");
+    }
 
     @Test
     void testConstructor() {
-        Worklist testWL = new Worklist("Gregor's Worklist");
         assertEquals("Gregor's Worklist", testWL.getWorklistName());
         assertEquals(0, testWL.getWorklistSize());
     }
 
     @Test
     void addRemoveCourseTest() {
-        Worklist testWL = new Worklist("2021W2");
-
         testWL.addCourse(cpsc210);
         assertEquals(1, testWL.getWorklistSize());
 
@@ -36,10 +40,17 @@ public class WorklistTest extends Courses {
     }
 
     @Test
-    void removeCourseTest() {
-        Worklist testWL = new Worklist("2052W1");
+    void testTakeAddRequest() {
+        testWL.takeAddRequest(firstYears, 2);
+        assertEquals(cpsc121, testWL.getWorklistEntries().get(0));
 
-        testWL.addCourse(cpsc210);
-        testWL.addCourse(cpsc121);
+        testWL.takeAddRequest(fourthYears, 10);
+        assertEquals(cpsc420, testWL.getWorklistEntries().get(1));
+    }
+
+    @Test
+    void testSetWorklistName() {
+        testWL.setWorklistName("Carter's Worklist");
+        assertEquals("Carter's Worklist", testWL.getWorklistName());
     }
 }

@@ -22,12 +22,24 @@ public class WorklistListTest {
     }
 
     @Test
-    void testDisplayWorklistsEmpty() {
+    void testDisplayWorklists() {
         WorklistList testWLL = new WorklistList("Test WLL");
         assertTrue(testWLL.isEmpty());
         assertTrue(testWLL.displayWorklists());
 
         testWLL.add(testWL);
         assertFalse(testWLL.displayWorklists());
+    }
+
+    @Test
+    void testRemoveWorklistCantFindAndCanFind() {
+        testWLL.add(testWL);
+        assertEquals(1, testWLL.size());
+
+        testWLL.removeWorklist(testWL);
+        assertEquals(0, testWLL.size());
+
+        testWLL.removeWorklist(testWL);
+        assertEquals(0, testWLL.size());
     }
 }

@@ -80,6 +80,7 @@ public class JsonReader {
     }
 
     // MODIFIES: worklist
+    // EFFECTS: parses courses from JSON object and adds it to worklist
     private void addCourse(Worklist worklist, JSONObject jsonObject) {
         String name = jsonObject.getString("courseName");
         Course c = new Course(name, emptyForNow);

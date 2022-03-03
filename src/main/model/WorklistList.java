@@ -43,8 +43,17 @@ public class WorklistList implements Writable {
         return this.wll;
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes Worklist w from the worklist list. If Worklist w doesn't exist in the worklist list,
+    //          does nothing and prints a message
     public void removeWorklist(Worklist w) {
-        this.wll.remove(w);
+        if (this.wll.contains(w)) {
+            this.wll.remove(w);
+            System.out.println("");
+            System.out.println(w.getWorklistName() + " has been successfully deleted");
+        } else {
+            System.out.println("Cannot remove " + w.getWorklistName() + " because it doesn't exist!");
+        }
     }
 
     @Override
@@ -66,6 +75,7 @@ public class WorklistList implements Writable {
         return jsonArray;
     }
 
+    // EFFECTS: displays all worklists
     public boolean displayWorklists() {
         if (this.wll.isEmpty()) {
             System.out.println("You've got no worklists, silly!");

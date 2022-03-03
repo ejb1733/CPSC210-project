@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 // Worklist abstraction that represents a student's worklist.
 // A worklist has a name and list of courses that a student has chosen.
@@ -43,9 +42,7 @@ public class Worklist implements Writable {
 
     // MODIFIES: this
     // EFFECTS: takes a user's course choice and adds it to their worklist
-    public void takeAddRequest(ArrayList<Course> year) {
-        Scanner inputInt = new Scanner(System.in);
-        int num = inputInt.nextInt();
+    public void takeAddRequest(ArrayList<Course> year, int num) {
         for (int i = 0; i < year.size(); i++) {
             if (num - 1 == i) {
                 addCourse(year.get(num - 1));
@@ -68,16 +65,11 @@ public class Worklist implements Writable {
         return this.worklist;
     }
 
-    // EFFECTS: returns a list of worklists
-    public ArrayList<Worklist> getWorklists() {
-        return this.worklistArrayList;
-    }
-
+    // MODIFIES: this
+    // EFFECTS: changes this Worklist's name to the given name
     public void setWorklistName(String setName) {
         this.name = setName;
     }
-
-
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

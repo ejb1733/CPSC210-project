@@ -80,8 +80,9 @@ public abstract class Courses {
 
     // EFFECTS: print a list of options to console
     public void menu() {
-        System.out.println("\nWelcome to UBC WonderfulWorklists!");
-        System.out.println("\nPlease select from the following options:");
+        System.out.println();
+        System.out.println("Welcome to UBC WonderfulWorklists!");
+        System.out.println("Please select from the following options:");
         System.out.println("\n\tN -> Create a New Worklist");
         System.out.println("\tC -> Create a New Course");
         System.out.println("\tE -> Edit your Worklists");
@@ -111,26 +112,24 @@ public abstract class Courses {
         System.out.println("\t5 -> Delete this Worklist");
     }
 
-    // EFFECTS: displays given year's course catalogue
-    public void displayYearOptions(int year) {
-        String whichYear = null;
-        ArrayList<Course> coursesInput = null;
+    // EFFECTS: forwards selected year to printYearOptions with proper course catalogue
+    public void selectYearOptions(int year) {
         if (year == 1) {
-            whichYear = "first";
-            coursesInput = firstYears;
+            printYearOptions(firstYears);
         } else if (year == 2) {
-            whichYear = "second";
-            coursesInput = secondYears;
+            printYearOptions(secondYears);
         } else if (year == 3) {
-            whichYear = "third";
-            coursesInput = thirdYears;
+            printYearOptions(thirdYears);
         } else if (year == 4) {
-            whichYear = "fourth";
-            coursesInput = fourthYears;
+            printYearOptions(fourthYears);
         }
-        System.out.println("Please select from the following " + whichYear + " year courses:");
-        for (int c = 0; c < coursesInput.size(); c++) {
-            System.out.println("\t" + (c + 1) + " - > " + coursesInput.get(c).getCourseName());
+    }
+
+    // EFFECTS: prints all the courses from a given year. Super cool method
+    public void printYearOptions(ArrayList<Course> catalogue) {
+        System.out.println("Please select from the following courses:");
+        for (int c = 0; c < catalogue.size(); c++) {
+            System.out.println("\t" + (c + 1) + " - > " + catalogue.get(c).getCourseName());
         }
 
     }
