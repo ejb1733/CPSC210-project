@@ -36,14 +36,11 @@ public class WonderfulWorklists extends Courses {
     private void runWorklist() {
         String command;
         boolean running = true;
-
         init();
-
         while (running) {
             menu();
             command = input.next();
             command = command.toLowerCase();
-
             if (command.equals("q")) {
                 System.out.println("Would you like to save your worklists before you quit?");
                 System.out.println("\t Y -> Save");
@@ -59,6 +56,7 @@ public class WonderfulWorklists extends Courses {
             }
         }
         System.out.println("\nUntil next time!");
+        System.exit(999);
     }
 
     // MODIFIES: this
@@ -321,5 +319,4 @@ public class WonderfulWorklists extends Courses {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
-
 }

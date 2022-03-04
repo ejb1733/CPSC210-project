@@ -1,18 +1,16 @@
 package persistence;
 
-import model.Course;
-import model.Courses;
 import model.Worklist;
 import model.WorklistList;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// tests for the JsonReader class
 public class JsonReaderTest {
 
     @Test

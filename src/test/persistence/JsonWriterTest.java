@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// tests for the JsonWriter class
 public class JsonWriterTest extends Courses {
-
-    private final ArrayList<Course> emptyForNow = new ArrayList<>();
 
     @Test
     void testWriterInvalidFile() {

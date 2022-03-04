@@ -2,17 +2,15 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONWriter;
-import persistence.JsonWriter;
 import persistence.Writable;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+// Abstraction to represent a list of worklists
+// a WorklistList has a name and list of worklists
 public class WorklistList implements Writable {
     String name;
     ArrayList<Worklist> wll;
-    private static final String JSON_STORE = "./data/yourWorklists.json";
 
     public WorklistList(String name) {
         this.name = name;

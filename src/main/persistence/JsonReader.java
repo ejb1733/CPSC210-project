@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Course;
+import model.Courses;
 import model.Worklist;
 import model.WorklistList;
 import org.json.JSONArray;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.stream.Stream;
 
 // Represents a reader that reads workroom from JSON data stored in file
-public class JsonReader {
+public class JsonReader extends Courses {
     private String source;
     private ArrayList<Course> emptyForNow = new ArrayList<>();
 
@@ -86,5 +87,4 @@ public class JsonReader {
         Course c = new Course(name, emptyForNow);
         worklist.addCourse(c);
     }
-
 }

@@ -66,7 +66,7 @@ public class Worklist implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: changes this Worklist's name to the given name
+    // EFFECTS: changes this worklist's name to the given name
     public void setWorklistName(String setName) {
         this.name = setName;
     }
