@@ -3,7 +3,6 @@ package ui;
 import model.Course;
 import model.Courses;
 import model.Worklist;
-import model.WorklistList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +52,16 @@ public class WorklistPage extends Courses implements ActionListener {
         frame1.setTitle("Create a New Worklist");
         frame1.setVisible(true);
 
-        nextButton.addActionListener(this);
+        nextButton.addActionListener(
+                e -> {
+                    String name = enterNameField.getText();
+                    worklist = new Worklist(name);
+                    wll.add(worklist);
+                    System.out.println(wll.size());
+                    secondPage();
+                    frame1.dispose();
+                }
+        );
     }
 
     void secondPage() {
@@ -98,7 +106,6 @@ public class WorklistPage extends Courses implements ActionListener {
         panel3.add(goBack);
         goBack.addActionListener(
                 e -> {
-                    new WelcomePage();
                     frame3.dispose();
                     frame2.dispose();
                 }
@@ -119,11 +126,6 @@ public class WorklistPage extends Courses implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String name = enterNameField.getText();
-        worklist = new Worklist(name);
-        wll.add(worklist);
-        secondPage();
-        frame1.dispose();
         if (e.getSource() == firstYearButton) {
             coursePages(firstYears);
         } else if (e.getSource() == secondYearButton) {

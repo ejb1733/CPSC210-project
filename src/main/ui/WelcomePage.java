@@ -1,6 +1,7 @@
 package ui;
 
 import model.Courses;
+import model.WorklistList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class WelcomePage extends Courses implements ActionListener {
 
     public WelcomePage() {
         setupGUI();
+        wll.getWll();
 
         buttonQuit.addActionListener(
                 e -> System.exit(1)
@@ -59,12 +61,10 @@ public class WelcomePage extends Courses implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonNewWorklist) {
             new WorklistPage();
-            frame.dispose();
         } else if (e.getSource() == buttonEditWorklists) {
-            System.out.println("lol");
+            System.out.println(wll.size());
             if (wll.size() > 0) {
                 new EditPage();
-                frame.dispose();
             } else {
                 emptyWorklistList();
             }

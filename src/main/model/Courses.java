@@ -8,7 +8,7 @@ import java.util.Collections;
 // given from the website in the readme
 public abstract class Courses {
 
-    protected WorklistList wll = new WorklistList("WonderfulWorklists");
+    protected static WorklistList wll = new WorklistList("WonderfulWorklists");
 
     protected ArrayList<Course> noPrereqs = new ArrayList<>();
 
