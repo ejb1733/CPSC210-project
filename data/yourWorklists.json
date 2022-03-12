@@ -1,20 +1,4 @@
 {
-    "worklists": [{
-        "courses": [
-            {
-                "courseName": "CPSC 444",
-                "prereqs": []
-            },
-            {
-                "courseName": "CPSC 344",
-                "prereqs": []
-            },
-            {
-                "courseName": "CPSC 445",
-                "prereqs": []
-            }
-        ],
-        "worklistName": "Ethan's Worklist"
-    }],
+    "worklists": [],
     "name": "WonderfulWorklists"
 }
