@@ -18,7 +18,6 @@ public class WonderfulWorklists extends Courses {
     private JsonReader jsonReader;
 
     private Worklist worklist;
-    private WorklistList wll = new WorklistList("WonderfulWorklists");
 
     private Scanner input;
 

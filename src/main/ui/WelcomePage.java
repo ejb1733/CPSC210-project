@@ -1,11 +1,13 @@
 package ui;
 
+import model.Courses;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WelcomePage implements ActionListener {
+public class WelcomePage extends Courses implements ActionListener {
     JFrame frame;
     JPanel panel;
     JButton buttonNewWorklist = new JButton("Create a New Worklist!");
@@ -22,6 +24,7 @@ public class WelcomePage implements ActionListener {
                 e -> System.exit(1)
         );
         buttonNewWorklist.addActionListener(this);
+        buttonEditWorklists.addActionListener(this);
     }
 
     void setupGUI() {
@@ -57,6 +60,20 @@ public class WelcomePage implements ActionListener {
         if (e.getSource() == buttonNewWorklist) {
             new WorklistPage();
             frame.dispose();
+        } else if (e.getSource() == buttonEditWorklists) {
+            System.out.println("lol");
+            if (wll.size() > 0) {
+                new EditPage();
+                frame.dispose();
+            } else {
+                emptyWorklistList();
+            }
         }
+    }
+
+    void emptyWorklistList() {
+        String message = "You have no worklists, silly!";
+        JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+                JOptionPane.ERROR_MESSAGE);
     }
 }

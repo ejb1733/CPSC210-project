@@ -1,11 +1,15 @@
 package ui;
 
+import model.Course;
 import model.Courses;
 import model.Worklist;
+import model.WorklistList;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class WorklistPage extends Courses implements ActionListener {
     JFrame frame1;
@@ -78,25 +82,28 @@ public class WorklistPage extends Courses implements ActionListener {
         frame2.setVisible(true);
     }
 
-    void coursePages(int year) {
+    void coursePages(ArrayList<Course> year) {
         setPage3();
-        if (year == 1) {
-            for (int i = 0; i < firstYears.size(); i++) {
-                panel3.add(new JButton(firstYears.get(i).getCourseName()));
-            }
-        } else if (year == 2) {
-            for (int i = 0; i < secondYears.size(); i++) {
-                panel3.add(new JButton(secondYears.get(i).getCourseName()));
-            }
-        } else if (year == 3) {
-            for (int i = 0; i < secondYears.size(); i++) {
-                panel3.add(new JButton(thirdYears.get(i).getCourseName()));
-            }
-        } else if (year == 4) {
-            for (int i = 0; i < fourthYears.size(); i++) {
-                panel3.add(new JButton(fourthYears.get(i).getCourseName()));
-            }
+        JButton jb;
+        JButton goBack = new JButton("Back to main menu");
+
+        for (Course c : year) {
+            panel3.add(jb = new JButton(c.getCourseName()));
+            jb.addActionListener(
+                    e -> worklist.addCourse(c)
+            );
         }
+
+        panel3.add(Box.createHorizontalStrut(10));
+        panel3.add(goBack);
+        goBack.addActionListener(
+                e -> {
+                    new WelcomePage();
+                    frame3.dispose();
+                    frame2.dispose();
+                }
+        );
+
         frame3.setTitle("Courses from year " + year);
         frame3.setVisible(true);
     }
@@ -104,7 +111,8 @@ public class WorklistPage extends Courses implements ActionListener {
     void setPage3() {
         frame3 = new JFrame();
         panel3 = new JPanel();
-        frame3.setSize(500, 500);
+        panel3.setLayout(new GridLayout(0, 1));
+        frame3.setSize(350, 600);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.add(panel3);
     }
@@ -113,16 +121,17 @@ public class WorklistPage extends Courses implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String name = enterNameField.getText();
         worklist = new Worklist(name);
+        wll.add(worklist);
         secondPage();
         frame1.dispose();
         if (e.getSource() == firstYearButton) {
-            coursePages(1);
+            coursePages(firstYears);
         } else if (e.getSource() == secondYearButton) {
-            coursePages(2);
+            coursePages(secondYears);
         } else if (e.getSource() == thirdYearButton) {
-            coursePages(3);
+            coursePages(thirdYears);
         } else if (e.getSource() == fourthYearButton) {
-            coursePages(4);
+            coursePages(fourthYears);
         }
     }
 }

@@ -8,6 +8,8 @@ import java.util.Collections;
 // given from the website in the readme
 public abstract class Courses {
 
+    protected WorklistList wll = new WorklistList("WonderfulWorklists");
+
     protected ArrayList<Course> noPrereqs = new ArrayList<>();
 
     protected Course cpsc110 = new Course("CPSC 110", noPrereqs);

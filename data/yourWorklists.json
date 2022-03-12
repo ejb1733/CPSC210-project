@@ -1,4 +1,97 @@
 {
-    "worklists": [],
+    "worklists": [
+        {
+            "courses": [
+                {
+                    "courseName": "CPSC 110",
+                    "prereqs": []
+                },
+                {
+                    "courseName": "CPSC 304",
+                    "prereqs": [{
+                        "courseName": "CPSC 221",
+                        "prereqs": [
+                            {
+                                "courseName": "CPSC 121",
+                                "prereqs": [{
+                                    "courseName": "CPSC 110",
+                                    "prereqs": []
+                                }]
+                            },
+                            {
+                                "courseName": "CPSC 210",
+                                "prereqs": [{
+                                    "courseName": "CPSC 110",
+                                    "prereqs": []
+                                }]
+                            }
+                        ]
+                    }]
+                }
+            ],
+            "worklistName": "Let's go"
+        },
+        {
+            "courses": [{
+                "courseName": "CPSC 444",
+                "prereqs": [
+                    {
+                        "courseName": "CPSC 310",
+                        "prereqs": [
+                            {
+                                "courseName": "CPSC 213",
+                                "prereqs": [
+                                    {
+                                        "courseName": "CPSC 121",
+                                        "prereqs": [{
+                                            "courseName": "CPSC 110",
+                                            "prereqs": []
+                                        }]
+                                    },
+                                    {
+                                        "courseName": "CPSC 210",
+                                        "prereqs": [{
+                                            "courseName": "CPSC 110",
+                                            "prereqs": []
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "courseName": "CPSC 221",
+                                "prereqs": [
+                                    {
+                                        "courseName": "CPSC 121",
+                                        "prereqs": [{
+                                            "courseName": "CPSC 110",
+                                            "prereqs": []
+                                        }]
+                                    },
+                                    {
+                                        "courseName": "CPSC 210",
+                                        "prereqs": [{
+                                            "courseName": "CPSC 110",
+                                            "prereqs": []
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "courseName": "CPSC 344",
+                        "prereqs": [{
+                            "courseName": "CPSC 210",
+                            "prereqs": [{
+                                "courseName": "CPSC 110",
+                                "prereqs": []
+                            }]
+                        }]
+                    }
+                ]
+            }],
+            "worklistName": "OK!"
+        }
+    ],
     "name": "WonderfulWorklists"
 }
