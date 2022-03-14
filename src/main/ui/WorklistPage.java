@@ -37,11 +37,10 @@ public class WorklistPage extends Courses implements ActionListener {
         frame1 = new JFrame();
         panel1 = new JPanel();
 
-        frame1.setSize(300, 300);
+        frame1.setSize(300, 125);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.add(panel1);
 
-        enterLabel.setBounds(35, 45, 250, 25);
         panel1.add(enterLabel);
 
         enterNameField.setBounds(25, 20, 250, 25);
@@ -49,6 +48,7 @@ public class WorklistPage extends Courses implements ActionListener {
         nextButton.setBounds(25, 100, 250, 50);
         panel1.add(nextButton);
 
+        frame1.setLocationRelativeTo(null);
         frame1.setTitle("Create a New Worklist");
         frame1.setVisible(true);
 
@@ -57,7 +57,6 @@ public class WorklistPage extends Courses implements ActionListener {
                     String name = enterNameField.getText();
                     worklist = new Worklist(name);
                     wll.add(worklist);
-                    System.out.println(wll.size());
                     secondPage();
                     frame1.dispose();
                 }
@@ -65,8 +64,8 @@ public class WorklistPage extends Courses implements ActionListener {
     }
 
     void secondPage() {
-        JLabel selectYearsLabel = new JLabel("To add courses to " + worklist.getWorklistName()
-                + ", please select from the following:");
+        JLabel selectYearsLabel = new JLabel("To add courses to - " + worklist.getWorklistName()
+                + " - please select from the following:");
 
         frame2 = new JFrame();
         panel2 = new JPanel();
