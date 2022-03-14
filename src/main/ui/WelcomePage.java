@@ -70,7 +70,7 @@ public class WelcomePage extends Courses implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonNewWorklist) {
-            new WorklistPage();
+            new WorklistPage(0);
         } else if (e.getSource() == buttonEditWorklists) {
             if (wll.size() > 0) {
                 new EditPage();

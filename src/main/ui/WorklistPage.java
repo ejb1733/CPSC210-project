@@ -29,8 +29,10 @@ public class WorklistPage extends Courses implements ActionListener {
     JFrame frame3;
     JPanel panel3;
 
-    WorklistPage() {
-        firstPage();
+    WorklistPage(int i) {
+        if (i == 0) {
+            firstPage();
+        }
     }
 
     void firstPage() {
@@ -57,13 +59,14 @@ public class WorklistPage extends Courses implements ActionListener {
                     String name = enterNameField.getText();
                     worklist = new Worklist(name);
                     wll.add(worklist);
-                    secondPage();
+                    secondPage(worklist);
                     frame1.dispose();
                 }
         );
     }
 
-    void secondPage() {
+    public void secondPage(Worklist wl) {
+        worklist = wl;
         JLabel selectYearsLabel = new JLabel("To add courses to - " + worklist.getWorklistName()
                 + " - please select from the following:");
 

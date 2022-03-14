@@ -89,7 +89,12 @@ public class EditPage extends Courses implements ActionListener {
                     frame3.setVisible(true);
                 }
         );
-        add.addActionListener(this);
+        add.addActionListener(
+                e -> {
+                    WorklistPage p = new WorklistPage(1);
+                    p.secondPage(wl);
+                }
+        );
         remove.addActionListener(this);
         editName.addActionListener(this);
         delete.addActionListener(
