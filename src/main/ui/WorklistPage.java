@@ -71,6 +71,8 @@ public class WorklistPage extends Courses implements ActionListener {
                 + " - please select from the following:");
 
         frame2 = new JFrame();
+        frame2.setLayout(new GridLayout(0, 1));
+        frame2.setLocationRelativeTo(null);
         panel2 = new JPanel();
 
         frame2.setSize(500, 200);

@@ -18,7 +18,7 @@ public class EditPage extends Courses implements ActionListener {
     JPanel panel99;
     JPanel panel2;
     JPanel panel3;
-    JLabel headerLabel = new JLabel("Please select from the following worklists:");
+    JLabel headerLabel = new JLabel("Please select from:", SwingConstants.CENTER);
 
     JButton nextButton;
     JButton goBack = new JButton("Back to Main Menu");
@@ -53,6 +53,7 @@ public class EditPage extends Courses implements ActionListener {
             panel1.add(nextButton);
         }
         goBack.addActionListener(this);
+        panel1.add(Box.createHorizontalStrut(10));
         panel1.add(goBack);
         frame1.setTitle("Select a Worklist to Edit");
         frame1.setLocationRelativeTo(null);
@@ -78,25 +79,21 @@ public class EditPage extends Courses implements ActionListener {
     }
 
     void editButtons(Worklist wl) {
-        view.addActionListener(
-                e -> {
-                    setFrame3();
-                    for (Course c : wl.getWorklistEntries()) {
-                        panel3.add(new JLabel(c.getCourseName()));
-                    }
-                    panel3.add(goBack3);
-                    frame3.add(panel3);
-                    frame3.setVisible(true);
-                }
-        );
+        view.addActionListener(e -> new ViewCourses(wl));
         add.addActionListener(
                 e -> {
                     WorklistPage p = new WorklistPage(1);
                     p.secondPage(wl);
                 }
         );
-        remove.addActionListener(this);
-        editName.addActionListener(this);
+        remove.addActionListener(e -> new RemoveCourse(wl));
+        editName.addActionListener(
+                e -> {
+                    new EditName(wl);
+                    frame2.dispose();
+                    frame1.dispose();
+                }
+        );
         delete.addActionListener(
                 e -> {
                     wll.removeWorklist(wl);
@@ -122,17 +119,6 @@ public class EditPage extends Courses implements ActionListener {
         frame2.add(panel2);
         panel2.setLayout(new GridLayout(0, 1));
         frame2.setVisible(true);
-    }
-
-    void setFrame3() {
-        frame3 = new JFrame();
-        panel3 = new JPanel();
-        goBack3.addActionListener(this);
-
-        frame3.setSize(300, 300);
-        frame3.setLocationRelativeTo(null);
-        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel3.setLayout(new GridLayout(0, 1));
     }
 
     @Override
