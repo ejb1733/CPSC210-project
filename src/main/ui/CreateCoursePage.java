@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents the page that enables users to create a new course
 public class CreateCoursePage extends Courses implements ActionListener {
     JFrame frame;
     JPanel panel;
@@ -22,10 +23,12 @@ public class CreateCoursePage extends Courses implements ActionListener {
 
     Course course;
 
+    // EFFECTS: constructs a new page
     CreateCoursePage() {
         setupGUI();
     }
 
+    // EFFECTS: sets up JFrame for entering a name
     void setupGUI() {
         enterName = new JTextField(20);
         setName = new JButton("next");
@@ -44,6 +47,7 @@ public class CreateCoursePage extends Courses implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: sets up JFrame for selecting a year
     void setupGUI2() {
         frame2 = new JFrame();
         panel2 = new JPanel();
@@ -64,6 +68,7 @@ public class CreateCoursePage extends Courses implements ActionListener {
         frame2.setVisible(true);
     }
 
+    // EFFECTS: parses the Combo Box and buttons' inputs
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == setName) {

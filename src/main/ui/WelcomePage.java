@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+// Represents the GUI's welcome page when the program is run
 public class WelcomePage extends Courses implements ActionListener {
     JFrame frame;
     JPanel panel;
@@ -20,6 +21,7 @@ public class WelcomePage extends Courses implements ActionListener {
 
     Color ubcColour = new Color(12, 35, 68);
 
+    // EFFECTS: creates a new page
     public WelcomePage() {
         try {
             setupGUI();
@@ -36,12 +38,14 @@ public class WelcomePage extends Courses implements ActionListener {
         buttonLoadWorklists.addActionListener(this);
     }
 
+    // EFFECTS: sets up the page
     void setupGUI() throws IOException {
         frame = new JFrame();
         setPanels();
         setFrame();
     }
 
+    // EFFECTS: sets up the panels
     void setPanels() {
         ImageIcon logo = new ImageIcon("/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/yay.jpeg");
         Image scaleImage = logo.getImage().getScaledInstance(425, 120, Image.SCALE_SMOOTH);
@@ -60,6 +64,7 @@ public class WelcomePage extends Courses implements ActionListener {
         panel.add(buttonQuit);
     }
 
+    // EFFECTS: sets up the frame
     void setFrame() {
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +74,7 @@ public class WelcomePage extends Courses implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: parses the input from buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonNewWorklist) {
@@ -86,6 +92,7 @@ public class WelcomePage extends Courses implements ActionListener {
         }
     }
 
+    // EFFECTS: creates an error pop-up window if the user clicks Edit Worklists when they have no worklists on file
     void emptyWorklistList() {
         String message = "You have no worklists, silly!";
         JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",

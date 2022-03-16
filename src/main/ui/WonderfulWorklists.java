@@ -302,7 +302,7 @@ public class WonderfulWorklists extends Courses {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads the WorklistList on file
     private void loadWorklist() {
         try {
             wll = jsonReader.read();
@@ -313,7 +313,7 @@ public class WonderfulWorklists extends Courses {
         }
     }
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the WorklistList to file
     private void saveWorklistList(WorklistList wll) {
         try {
             jsonWriter.open();

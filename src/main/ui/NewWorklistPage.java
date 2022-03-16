@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// Represents the "Create a New Worklist" and "Add a Course" pages
 public class NewWorklistPage extends Courses implements ActionListener {
     JFrame frame1;
     JPanel panel1;
@@ -29,12 +30,17 @@ public class NewWorklistPage extends Courses implements ActionListener {
     JFrame frame3;
     JPanel panel3;
 
+    // EFFECTS: creates a new worklist
+    //          if i  = 0, user is creating a new worklist
+    //          if i /= 0, user is accessing from Edit -> Add a course
     NewWorklistPage(int i) {
         if (i == 0) {
             firstPage();
         }
     }
 
+    // EFFECTS: sets up the first page where a new worklist is created
+    //          takes user input for the name of the new worklist
     void firstPage() {
         frame1 = new JFrame();
         panel1 = new JPanel();
@@ -65,6 +71,7 @@ public class NewWorklistPage extends Courses implements ActionListener {
         );
     }
 
+    // EFFECTS: allows the user to add courses to a worklist
     public void secondPage(Worklist wl) {
         worklist = wl;
         JLabel selectYearsLabel = new JLabel("<html><center>To add courses to - " + worklist.getWorklistName()
@@ -94,6 +101,8 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame2.setVisible(true);
     }
 
+    // EFFECTS: displays the courses in a given year
+    //          takes the user's course choice and adds it to the worklist
     void coursePages(ArrayList<Course> year) {
         setPage3();
         JButton jb;
@@ -119,6 +128,7 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame3.setVisible(true);
     }
 
+    // EFFECTS: sets up the course choice page
     void setPage3() {
         frame3 = new JFrame();
         panel3 = new JPanel();
@@ -129,6 +139,7 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame3.add(panel3);
     }
 
+    // EFFECTS: parses the button inputs of the user
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == firstYearButton) {

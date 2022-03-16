@@ -6,16 +6,19 @@ import model.Worklist;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents the Edit -> Remove a course page
 public class EditRemoveCoursePage {
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     JButton nextButton;
     JButton back;
 
+    // EFFECTS: constructs a new page
     EditRemoveCoursePage(Worklist wl) {
         removeCourse(wl);
     }
 
+    // EFFECTS: allows the user to delete a chosen course from the worklist
     void removeCourse(Worklist wl) {
         setFrame(wl);
         for (Course c : wl.getWorklistEntries()) {
@@ -39,6 +42,7 @@ public class EditRemoveCoursePage {
         errorScreen(wl);
     }
 
+    // EFFECTS: sets up the frame
     void setFrame(Worklist wl) {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(0, 1));
@@ -49,6 +53,7 @@ public class EditRemoveCoursePage {
         frame.setVisible(true);
     }
 
+    // EFFECTS: displays the error screen when the worklist is empty
     void errorScreen(Worklist wl) {
         if (wl.getWorklistSize() == 0) {
             String s = "Worklist is empty!";

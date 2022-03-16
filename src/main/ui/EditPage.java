@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 
 import model.Courses;
 
+// Represents the edit page that presents the user with their worklists and asks which one they would like to edit,
+// then gives them 5 choices for how to edit their worklist
 public class EditPage extends Courses implements ActionListener {
     JFrame frame1;
     JFrame frame2;
@@ -27,10 +29,12 @@ public class EditPage extends Courses implements ActionListener {
     JButton editName;
     JButton delete;
 
+    // EFFECTS: creates a new page
     EditPage() {
         firstPage();
     }
 
+    // EFFECTS: sets up the main page where a user must select a worklist to modify
     void firstPage() {
         frame1 = new JFrame();
         panel1 = new JPanel();
@@ -58,6 +62,7 @@ public class EditPage extends Courses implements ActionListener {
 
     }
 
+    // EFFECTS: page for the 5 options a user has to edit their selected worklist
     void editWorklist(Worklist wl) {
         setFrame2(wl);
         view = new JButton("View courses");
@@ -75,7 +80,7 @@ public class EditPage extends Courses implements ActionListener {
         editButtons(wl);
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    // EFFECTS: provides functionality for each of the 5 choice buttons
     void editButtons(Worklist wl) {
         view.addActionListener(e -> new EditViewCoursesPage(wl));
         add.addActionListener(
@@ -92,19 +97,10 @@ public class EditPage extends Courses implements ActionListener {
                     frame1.dispose();
                 }
         );
-        delete.addActionListener(
-                e -> {
-                    wll.removeWorklist(wl);
-                    String message = "Your worklist - " + wl.getWorklistName()
-                            + " - has been successfully deleted.";
-                    JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
-                            JOptionPane.ERROR_MESSAGE);
-                    frame2.dispose();
-                    frame1.dispose();
-                }
-        );
+        delete.addActionListener(e -> deleteWorklist(wl));
     }
 
+    // EFFECTS: sets up the choice window given a selected worklist
     void setFrame2(Worklist wl) {
         frame2 = new JFrame();
         frame2.setTitle("Options for editing " + wl.getWorklistName());
@@ -119,6 +115,18 @@ public class EditPage extends Courses implements ActionListener {
         frame2.setVisible(true);
     }
 
+    // EFFECTS: deletes given worklist from the WorklistList
+    void deleteWorklist(Worklist wl) {
+        wll.removeWorklist(wl);
+        String message = "Your worklist - " + wl.getWorklistName()
+                + " - has been successfully deleted.";
+        JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+                JOptionPane.ERROR_MESSAGE);
+        frame2.dispose();
+        frame1.dispose();
+    }
+
+    // EFFECTS: provides functionality to the back buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == goBack) {

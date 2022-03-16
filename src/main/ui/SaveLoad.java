@@ -7,11 +7,13 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Represents the GUI's Save and Load functionality
 public class SaveLoad extends Courses {
     private static final String JSON_STORE = "./data/yourWorklists.json";
     private final JsonWriter jsonWriter;
     private final JsonReader jsonReader;
 
+    // EFFECTS: depending on the button clicked on the Welcome Page, calls the save() or load() method
     SaveLoad(String var) {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -22,6 +24,7 @@ public class SaveLoad extends Courses {
         }
     }
 
+    // EFFECTS: saves the WorklistList to file
     void save() {
         try {
             jsonWriter.open();
@@ -33,6 +36,7 @@ public class SaveLoad extends Courses {
         }
     }
 
+    // EFFECTS: loads the WorklistList on file
     void load() {
         try {
             wll = jsonReader.read();

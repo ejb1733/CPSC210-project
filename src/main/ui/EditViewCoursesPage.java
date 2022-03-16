@@ -6,6 +6,7 @@ import model.Worklist;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents the Edit -> View courses page
 public class EditViewCoursesPage {
     JFrame frame;
     JPanel panel;
@@ -15,11 +16,13 @@ public class EditViewCoursesPage {
 
     int count = 0;
 
+    // EFFECTS: contructs a new page
     EditViewCoursesPage(Worklist wl) {
         worklist = wl;
         viewCourses();
     }
 
+    // EFFECTS: displays the courses in worklist
     void viewCourses() {
         setFrame();
         for (Course c : worklist.getWorklistEntries()) {
@@ -32,6 +35,7 @@ public class EditViewCoursesPage {
         frame.setVisible(true);
     }
 
+    // EFFECTS: sets up the frame
     void setFrame() {
         frame = new JFrame();
         panel = new JPanel();
