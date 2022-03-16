@@ -6,13 +6,13 @@ import model.Worklist;
 import javax.swing.*;
 import java.awt.*;
 
-public class RemoveCourse {
+public class EditRemoveCoursePage {
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     JButton nextButton;
     JButton back;
 
-    RemoveCourse(Worklist wl) {
+    EditRemoveCoursePage(Worklist wl) {
         removeCourse(wl);
     }
 

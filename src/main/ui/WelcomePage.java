@@ -18,6 +18,8 @@ public class WelcomePage extends Courses implements ActionListener {
     JButton buttonSaveWorklists = new JButton("Save your Worklists");
     JButton buttonQuit = new JButton("Quit");
 
+    Color ubcColour = new Color(12, 35, 68);
+
     public WelcomePage() {
         try {
             setupGUI();
@@ -28,6 +30,7 @@ public class WelcomePage extends Courses implements ActionListener {
                 e -> System.exit(1)
         );
         buttonNewWorklist.addActionListener(this);
+        buttonNewCourse.addActionListener(e -> new CreateCoursePage());
         buttonEditWorklists.addActionListener(this);
         buttonSaveWorklists.addActionListener(this);
         buttonLoadWorklists.addActionListener(this);
@@ -37,16 +40,16 @@ public class WelcomePage extends Courses implements ActionListener {
         frame = new JFrame();
         setPanels();
         setFrame();
-
     }
 
     void setPanels() {
+        ImageIcon logo = new ImageIcon("/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/yay.jpeg");
+        Image scaleImage = logo.getImage().getScaledInstance(500, 150, Image.SCALE_SMOOTH);
         panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(50, 20, 10, 20));
+        panel.setBorder(BorderFactory.createMatteBorder(20, 40, 20, 40, ubcColour));
         panel.setLayout(new GridLayout(0, 1));
-        JLabel picLabel = new JLabel(new ImageIcon("/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/ubclog.png"));
+        JLabel picLabel = new JLabel(new ImageIcon(scaleImage));
         panel.add(picLabel);
-        panel.add(Box.createHorizontalStrut(10));
         panel.add(buttonNewWorklist);
         panel.add(buttonNewCourse);
         panel.add(buttonEditWorklists);
@@ -70,7 +73,7 @@ public class WelcomePage extends Courses implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonNewWorklist) {
-            new WorklistPage(0);
+            new NewWorklistPage(0);
         } else if (e.getSource() == buttonEditWorklists) {
             if (wll.size() > 0) {
                 new EditPage();

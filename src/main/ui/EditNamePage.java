@@ -4,16 +4,15 @@ import model.Worklist;
 
 import javax.swing.*;
 
-public class EditName {
+public class EditNamePage {
     JFrame frame;
     JPanel panel;
     JTextField name = new JTextField(20);
     JButton enter = new JButton("Enter");
-    JButton back = new JButton("Back to Edit Options");
 
     Worklist worklist;
 
-    EditName(Worklist wl) {
+    EditNamePage(Worklist wl) {
         worklist = wl;
         editName();
     }
@@ -24,7 +23,6 @@ public class EditName {
         panel = new JPanel();
         panel.add(label);
         panel.add(name);
-
         enter = new JButton();
         enter.addActionListener(
                 e -> {
@@ -38,12 +36,10 @@ public class EditName {
                 }
         );
         panel.add(enter);
-
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setSize(300, 300);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
         frame.setVisible(true);
     }
 }

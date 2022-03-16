@@ -6,7 +6,7 @@ import model.Worklist;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewCourses {
+public class EditViewCoursesPage {
     JFrame frame;
     JPanel panel;
     JLabel label;
@@ -15,7 +15,7 @@ public class ViewCourses {
 
     int count = 0;
 
-    ViewCourses(Worklist wl) {
+    EditViewCoursesPage(Worklist wl) {
         worklist = wl;
         viewCourses();
     }

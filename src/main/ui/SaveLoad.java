@@ -14,12 +14,6 @@ public class SaveLoad extends Courses {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    JFrame saveFrame;
-    JFrame loadFrame;
-
-    JPanel savePanel;
-    JPanel loadPanel;
-
     SaveLoad(String var) {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -32,7 +26,6 @@ public class SaveLoad extends Courses {
 
     void save() {
         try {
-            System.out.println("lol");
             jsonWriter.open();
             jsonWriter.write(wll);
             jsonWriter.close();

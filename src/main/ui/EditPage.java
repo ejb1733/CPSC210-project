@@ -1,6 +1,5 @@
 package ui;
 
-import model.Course;
 import model.Worklist;
 
 import javax.swing.*;
@@ -78,18 +77,19 @@ public class EditPage extends Courses implements ActionListener {
         editButtons(wl);
     }
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     void editButtons(Worklist wl) {
-        view.addActionListener(e -> new ViewCourses(wl));
+        view.addActionListener(e -> new EditViewCoursesPage(wl));
         add.addActionListener(
                 e -> {
-                    WorklistPage p = new WorklistPage(1);
+                    NewWorklistPage p = new NewWorklistPage(1);
                     p.secondPage(wl);
                 }
         );
-        remove.addActionListener(e -> new RemoveCourse(wl));
+        remove.addActionListener(e -> new EditRemoveCoursePage(wl));
         editName.addActionListener(
                 e -> {
-                    new EditName(wl);
+                    new EditNamePage(wl);
                     frame2.dispose();
                     frame1.dispose();
                 }

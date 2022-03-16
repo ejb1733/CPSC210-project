@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class WorklistPage extends Courses implements ActionListener {
+public class NewWorklistPage extends Courses implements ActionListener {
     JFrame frame1;
     JPanel panel1;
     JLabel enterLabel = new JLabel("Enter a name for your new worklist");
@@ -29,7 +29,7 @@ public class WorklistPage extends Courses implements ActionListener {
     JFrame frame3;
     JPanel panel3;
 
-    WorklistPage(int i) {
+    NewWorklistPage(int i) {
         if (i == 0) {
             firstPage();
         }
@@ -68,12 +68,12 @@ public class WorklistPage extends Courses implements ActionListener {
     public void secondPage(Worklist wl) {
         worklist = wl;
         JLabel selectYearsLabel = new JLabel("To add courses to - " + worklist.getWorklistName()
-                + " - please select from the following:");
+                + " - please select from the following:", SwingConstants.CENTER);
 
         frame2 = new JFrame();
-        frame2.setLayout(new GridLayout(0, 1));
         frame2.setLocationRelativeTo(null);
         panel2 = new JPanel();
+        panel2.setLayout(new GridLayout(0, 1));
 
         frame2.setSize(500, 200);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
