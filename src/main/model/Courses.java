@@ -79,9 +79,6 @@ public abstract class Courses {
             cpsc415, cpsc416, cpsc417, cpsc418, cpsc420, cpsc421, cpsc422, cpsc424, cpsc425, cpsc426, cpsc427, cpsc444,
             cpsc445));
 
-    protected ArrayList<ArrayList<Course>> years = new ArrayList<>(Arrays.asList(firstYears, secondYears, thirdYears,
-            fourthYears));
-
     protected ArrayList<String> yearOptions = new ArrayList<>(Arrays.asList("First Year", "Second Year",
             "Third Year", "Fourth Year"));
 
@@ -93,7 +90,7 @@ public abstract class Courses {
         System.out.println("\n\tN -> Create a New Worklist");
         System.out.println("\tC -> Create a New Course");
         System.out.println("\tE -> Edit your Worklists");
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("\tL -> Load your Worklists");
         System.out.println("\tS -> Save your Worklists");
         // System.out.println("\tR -> Register a Worklist");

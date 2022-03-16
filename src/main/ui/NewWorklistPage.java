@@ -67,15 +67,13 @@ public class NewWorklistPage extends Courses implements ActionListener {
 
     public void secondPage(Worklist wl) {
         worklist = wl;
-        JLabel selectYearsLabel = new JLabel("To add courses to - " + worklist.getWorklistName()
-                + " - please select from the following:", SwingConstants.CENTER);
+        JLabel selectYearsLabel = new JLabel("<html><center>To add courses to - " + worklist.getWorklistName()
+                + " - please select from the following:</center></html>", SwingConstants.CENTER);
 
         frame2 = new JFrame();
-        frame2.setLocationRelativeTo(null);
         panel2 = new JPanel();
         panel2.setLayout(new GridLayout(0, 1));
 
-        frame2.setSize(500, 200);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.add(panel2);
 
@@ -91,13 +89,15 @@ public class NewWorklistPage extends Courses implements ActionListener {
         fourthYearButton.addActionListener(this);
 
         frame2.setTitle("Select Course Years");
+        frame2.setSize(300, 300);
+        frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
     }
 
     void coursePages(ArrayList<Course> year) {
         setPage3();
         JButton jb;
-        JButton goBack = new JButton("Back to main menu");
+        JButton goBack = new JButton("Back");
 
         for (Course c : year) {
             panel3.add(jb = new JButton(c.getCourseName()));
@@ -123,8 +123,9 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame3 = new JFrame();
         panel3 = new JPanel();
         panel3.setLayout(new GridLayout(0, 1));
-        frame3.setSize(350, 600);
+        frame3.setSize(300, 900);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setLocationRelativeTo(null);
         frame3.add(panel3);
     }
 

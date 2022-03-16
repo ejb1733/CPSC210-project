@@ -14,9 +14,7 @@ public class EditPage extends Courses implements ActionListener {
     JFrame frame2;
     JFrame frame3;
     JPanel panel1;
-    JPanel panel99;
     JPanel panel2;
-    JPanel panel3;
     JLabel headerLabel = new JLabel("Please select from:", SwingConstants.CENTER);
 
     JButton nextButton;

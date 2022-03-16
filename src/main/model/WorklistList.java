@@ -47,7 +47,7 @@ public class WorklistList implements Writable {
     public void removeWorklist(Worklist w) {
         if (this.wll.contains(w)) {
             this.wll.remove(w);
-            System.out.println("");
+            System.out.println(" ");
             System.out.println(w.getWorklistName() + " has been successfully deleted");
         } else {
             System.out.println("Cannot remove " + w.getWorklistName() + " because it doesn't exist!");

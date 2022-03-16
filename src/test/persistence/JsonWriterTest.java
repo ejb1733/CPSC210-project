@@ -18,7 +18,6 @@ public class JsonWriterTest extends Courses {
     @Test
     void testWriterInvalidFile() {
         try {
-            Worklist wl = new Worklist("randomWorklistNameLol");
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");

@@ -17,8 +17,7 @@ public class EditRemoveCoursePage {
     }
 
     void removeCourse(Worklist wl) {
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        panel.setLayout(new GridLayout(0, 1));
+        setFrame(wl);
         for (Course c : wl.getWorklistEntries()) {
             nextButton = new JButton(c.getCourseName());
             nextButton.addActionListener(
@@ -33,14 +32,24 @@ public class EditRemoveCoursePage {
             );
             panel.add(nextButton);
         }
-        frame.add(panel);
         panel.add(Box.createHorizontalStrut(10));
         back = new JButton("Back to Edit Options");
         back.addActionListener(e -> frame.dispose());
         panel.add(back);
+        errorScreen(wl);
+    }
+
+    void setFrame(Worklist wl) {
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        panel.setLayout(new GridLayout(0, 1));
+        frame.add(panel);
         frame.setSize(300, 300);
         frame.setLocationRelativeTo(null);
+        frame.setTitle("Remove a course from " + wl.getWorklistName());
         frame.setVisible(true);
+    }
+
+    void errorScreen(Worklist wl) {
         if (wl.getWorklistSize() == 0) {
             String s = "Worklist is empty!";
             JOptionPane.showMessageDialog(new JFrame(), s, "Oopsies!", JOptionPane.ERROR_MESSAGE);

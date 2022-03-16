@@ -16,8 +16,8 @@ import java.util.stream.Stream;
 
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader extends Courses {
-    private String source;
-    private ArrayList<Course> emptyForNow = new ArrayList<>();
+    private final String source;
+    private final ArrayList<Course> emptyForNow = new ArrayList<>();
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -37,7 +37,7 @@ public class JsonReader extends Courses {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s));
+            stream.forEach(contentBuilder::append);
         }
 
         return contentBuilder.toString();
@@ -66,13 +66,13 @@ public class JsonReader extends Courses {
     private void addWorklist(WorklistList wll, JSONObject jsonObject) {
         String name = jsonObject.getString("worklistName");
         Worklist worklist = new Worklist(name);
-        addCourses(worklist, wll, jsonObject);
+        addCourses(worklist, jsonObject);
         wll.add(worklist);
     }
 
     // MODIFIES: wll, worklist
     // EFFECTS: parses courses from JSON object and adds them to worklist
-    private void addCourses(Worklist worklist, WorklistList wll, JSONObject jsonObject) {
+    private void addCourses(Worklist worklist, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("courses");
         for (Object json : jsonArray) {
             JSONObject nextCourse = (JSONObject) json;

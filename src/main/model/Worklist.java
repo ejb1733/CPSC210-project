@@ -10,8 +10,7 @@ import java.util.ArrayList;
 // A worklist has a name and list of courses that a student has chosen.
 public class Worklist implements Writable {
     private String name;
-    private ArrayList<Course> worklist;
-    private ArrayList<Worklist> worklistArrayList;
+    private final ArrayList<Course> worklist;
 
     // EFFECTS: constructs an empty worklist that a student has made with a custom name
     public Worklist(String name) {
@@ -66,7 +65,7 @@ public class Worklist implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: changes this worklist's name to the given name
+    // EFFECTS: changes this worklists' name to the given name
     public void setWorklistName(String setName) {
         this.name = setName;
     }

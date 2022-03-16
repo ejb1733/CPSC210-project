@@ -1,18 +1,16 @@
 package ui;
 
 import model.Courses;
-import model.WorklistList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SaveLoad extends Courses {
     private static final String JSON_STORE = "./data/yourWorklists.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
     SaveLoad(String var) {
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -37,9 +35,8 @@ public class SaveLoad extends Courses {
 
     void load() {
         try {
-            WorklistList importedWll = jsonReader.read();
-            this.wll = importedWll;
-            System.out.println("");
+            wll = jsonReader.read();
+            System.out.println(" ");
             System.out.println("Loaded (" + wll.size() + ") worklists from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

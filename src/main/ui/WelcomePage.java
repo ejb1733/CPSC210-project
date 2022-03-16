@@ -44,7 +44,7 @@ public class WelcomePage extends Courses implements ActionListener {
 
     void setPanels() {
         ImageIcon logo = new ImageIcon("/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/yay.jpeg");
-        Image scaleImage = logo.getImage().getScaledInstance(500, 150, Image.SCALE_SMOOTH);
+        Image scaleImage = logo.getImage().getScaledInstance(425, 120, Image.SCALE_SMOOTH);
         panel = new JPanel();
         panel.setBorder(BorderFactory.createMatteBorder(20, 40, 20, 40, ubcColour));
         panel.setLayout(new GridLayout(0, 1));
@@ -65,7 +65,6 @@ public class WelcomePage extends Courses implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("UBC Wonderful Worklists");
         frame.pack();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

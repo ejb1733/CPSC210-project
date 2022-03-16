@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class WonderfulWorklists extends Courses {
     private static final String JSON_STORE = "./data/yourWorklists.json";
 
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
     private Worklist worklist;
 
@@ -61,19 +61,26 @@ public class WonderfulWorklists extends Courses {
     // MODIFIES: this
     // EFFECTS: executes user command
     private void processCommand(String command) {
-        if (command.equals("n")) {
-            takeName();
-            createWorklist();
-        } else if (command.equals("c")) {
-            createNewCourse();
-        } else if (command.equals("e")) {
-            editWorklists();
-        } else if (command.equals("l")) {
-            loadWorklist();
-        } else if (command.equals("s")) {
-            saveWorklistList(wll);
-        } else {
-            System.out.println("Please choose from a selection above");
+        switch (command) {
+            case "n":
+                takeName();
+                createWorklist();
+                break;
+            case "c":
+                createNewCourse();
+                break;
+            case "e":
+                editWorklists();
+                break;
+            case "l":
+                loadWorklist();
+                break;
+            case "s":
+                saveWorklistList(wll);
+                break;
+            default:
+                System.out.println("Please choose from a selection above");
+                break;
         }
     }
 
@@ -90,7 +97,7 @@ public class WonderfulWorklists extends Courses {
         printWorklistOptions(this.worklist.getWorklistName());
         takeInput(this.worklist);
         addMore();
-        this.wll.add(this.worklist);
+        wll.add(this.worklist);
     }
 
     // EFFECTS: takes the student's input for their worklist name
@@ -265,7 +272,7 @@ public class WonderfulWorklists extends Courses {
         } else if (choice == 4) {
             modifyName(w);
         } else if (choice == 5) {
-            this.wll.removeWorklist(w);
+            wll.removeWorklist(w);
         }
     }
 
@@ -298,9 +305,8 @@ public class WonderfulWorklists extends Courses {
     // EFFECTS: loads workroom from file
     private void loadWorklist() {
         try {
-            WorklistList importedWll = jsonReader.read();
-            this.wll = importedWll;
-            System.out.println("");
+            wll = jsonReader.read();
+            System.out.println(" ");
             System.out.println("Loaded (" + wll.size() + ") worklists from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
