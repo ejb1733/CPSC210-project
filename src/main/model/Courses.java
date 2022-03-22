@@ -149,13 +149,7 @@ public abstract class Courses {
 
     public void putCourse() {
         for (Course c : allCourses) {
-            try {
-                kappa.put(c.getCourseName(), c);
-            } catch (NullPointerException e) {
-                Course custom = new Course(c.getCourseName(), noPrereqs);
-                allCourses.add(custom);
-                kappa.put(custom.getCourseName(), c);
-            }
+            kappa.put(c.getCourseName(), c);
         }
     }
 

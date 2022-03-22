@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Courses;
 import model.Worklist;
 import model.WorklistList;
 import org.junit.jupiter.api.Test;
@@ -7,11 +8,10 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 // tests for the JsonReader class
-public class JsonReaderTest {
+public class JsonReaderTest extends Courses {
 
     @Test
     void testReaderNonExistentFile() {
@@ -48,6 +48,20 @@ public class JsonReaderTest {
             Worklist wl1 = wll.get(0);
             assertEquals("testWL1", wl1.getWorklistName());
             assertEquals(2, wl1.getWorklistSize());
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+    @Test
+    void testReaderWorklistWithCustomCourse() {
+        JsonReader reader = new JsonReader("./data/testReaderCustomCourseWorklist.json");
+        try {
+            assertEquals(38, allCourses.size());
+            WorklistList wll = reader.read();
+            assertEquals(3, wll.get(0).getWorklistSize());
+            assertEquals(40, allCourses.size());
+            assertTrue(customs.size() == 2);
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

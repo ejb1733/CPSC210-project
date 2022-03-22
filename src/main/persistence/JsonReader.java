@@ -84,10 +84,6 @@ public class JsonReader extends Courses {
     // EFFECTS: parses courses from JSON object and adds it to worklist
     private void addCourse(Worklist worklist, JSONObject jsonObject) {
         String name = jsonObject.getString("courseName");
-//        if (!findCourse(name)) {
-//            Course custom = new Course(name, emptyForNow);
-//            allCourses.add(custom);
-//        }
         putCourse();
         ArrayList<Course> prereqs;
         try {
@@ -97,8 +93,6 @@ public class JsonReader extends Courses {
         }
         Course c = new Course(name, prereqs);
         if (isACustomCourse(name)) {
-            System.out.println(name);
-            System.out.println(c.getCourseName());
             allCourses.add(c);
             customs.add(c);
         }
