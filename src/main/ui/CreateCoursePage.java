@@ -37,7 +37,6 @@ public class CreateCoursePage extends Courses implements ActionListener {
         panel = new JPanel();
         setName.addActionListener(this);
 
-
         panel.add(label);
         panel.add(enterName);
         panel.add(setName);
@@ -86,7 +85,9 @@ public class CreateCoursePage extends Courses implements ActionListener {
             } else if (year == 4) {
                 fourthYears.add(course);
             }
+            customs.add(course);
             frame2.dispose();
         }
     }
+
 }

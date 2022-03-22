@@ -26,6 +26,7 @@ public class NewWorklistPage extends Courses implements ActionListener {
     JButton secondYearButton = new JButton("Second year courses");
     JButton thirdYearButton = new JButton("Third year courses");
     JButton fourthYearButton = new JButton("Fourth year courses");
+    JButton customButton = new JButton("Custom courses");
 
     JFrame frame3;
     JPanel panel3;
@@ -84,16 +85,7 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.add(panel2);
 
-        panel2.add(selectYearsLabel);
-        panel2.add(firstYearButton);
-        panel2.add(secondYearButton);
-        panel2.add(thirdYearButton);
-        panel2.add(fourthYearButton);
-
-        firstYearButton.addActionListener(this);
-        secondYearButton.addActionListener(this);
-        thirdYearButton.addActionListener(this);
-        fourthYearButton.addActionListener(this);
+        extracted(selectYearsLabel);
 
         frame2.setTitle("Select Course Years");
         frame2.setSize(300, 300);
@@ -101,18 +93,38 @@ public class NewWorklistPage extends Courses implements ActionListener {
         frame2.setVisible(true);
     }
 
+    private void extracted(JLabel selectYearsLabel) {
+        panel2.add(selectYearsLabel);
+        panel2.add(firstYearButton);
+        panel2.add(secondYearButton);
+        panel2.add(thirdYearButton);
+        panel2.add(fourthYearButton);
+        panel2.add(Box.createHorizontalStrut(10));
+        panel2.add(customButton);
+
+        firstYearButton.addActionListener(this);
+        secondYearButton.addActionListener(this);
+        thirdYearButton.addActionListener(this);
+        fourthYearButton.addActionListener(this);
+        customButton.addActionListener(this);
+    }
+
     // EFFECTS: displays the courses in a given year
     //          takes the user's course choice and adds it to the worklist
     void coursePages(ArrayList<Course> year) {
         setPage3();
         JButton jb;
-        JButton goBack = new JButton("Back");
+        JButton goBack = new JButton("Done");
 
         for (Course c : year) {
             panel3.add(jb = new JButton(c.getCourseName()));
             jb.addActionListener(
-                    e -> worklist.addCourse(c)
-            );
+                    e -> {
+                        worklist.addCourse(c);
+                        String message = c.getCourseName() + " has been added successfully!";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "Success!",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    });
         }
 
         panel3.add(Box.createHorizontalStrut(10));
@@ -150,6 +162,14 @@ public class NewWorklistPage extends Courses implements ActionListener {
             coursePages(thirdYears);
         } else if (e.getSource() == fourthYearButton) {
             coursePages(fourthYears);
+        } else if (e.getSource() == customButton) {
+            if (customs.isEmpty()) {
+                String message = "You have no custom courses!";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Oops!!!!!!!!",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                coursePages(customs);
+            }
         }
     }
 }

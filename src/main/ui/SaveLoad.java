@@ -4,6 +4,7 @@ import model.Courses;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -30,7 +31,9 @@ public class SaveLoad extends Courses {
             jsonWriter.open();
             jsonWriter.write(wll);
             jsonWriter.close();
-            System.out.println("Saved (" + wll.size() + ") worklists to " + JSON_STORE);
+            String message = "Saved (" + wll.size() + ") worklists to " + JSON_STORE;
+            JOptionPane.showMessageDialog(new JFrame(), message, "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -41,7 +44,9 @@ public class SaveLoad extends Courses {
         try {
             wll = jsonReader.read();
             System.out.println(" ");
-            System.out.println("Loaded (" + wll.size() + ") worklists from " + JSON_STORE);
+            String message = "Loaded (" + wll.size() + ") worklists from " + JSON_STORE;
+            JOptionPane.showMessageDialog(new JFrame(), message, "Success!",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

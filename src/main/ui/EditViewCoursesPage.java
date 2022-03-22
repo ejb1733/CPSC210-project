@@ -5,18 +5,20 @@ import model.Worklist;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 // Represents the Edit -> View courses page
-public class EditViewCoursesPage {
+public class EditViewCoursesPage extends JComponent {
     JFrame frame;
     JPanel panel;
     JLabel label;
+    JButton next;
     JButton back = new JButton("Back to Edit Menu");
     Worklist worklist;
 
     int count = 0;
 
-    // EFFECTS: contructs a new page
+    // EFFECTS: constructs a new page
     EditViewCoursesPage(Worklist wl) {
         worklist = wl;
         viewCourses();
@@ -26,7 +28,8 @@ public class EditViewCoursesPage {
     void viewCourses() {
         setFrame();
         for (Course c : worklist.getWorklistEntries()) {
-            panel.add(new JButton(c.getCourseName()));
+            panel.add(next = new JButton(c.getCourseName()));
+            next.addActionListener(e -> new DrawTree(c));
             count++;
         }
         label = new JLabel("Number of courses in worklist: " + count, SwingConstants.CENTER);
@@ -34,6 +37,32 @@ public class EditViewCoursesPage {
         panel.add(back);
         frame.setVisible(true);
     }
+
+//    void viewTree(Course course) {
+//        ArrayList<Course> list = new ArrayList<>();
+//        for (Course c : course.getPrereqs()) {
+//            System.out.println(c.getCourseName());
+//            list.add(course);
+//        }
+//        renderTree(list);
+//    }
+//
+//    void renderTree(ArrayList<Course> list) {
+//        int size = list.size();
+//        System.out.println(size);
+//        setTreeFrame();
+//        Drawing myTree = new Drawing();
+//        frame2.add(myTree);
+//        frame2.setVisible(true);
+//    }
+//
+//    void setTreeFrame() {
+//        frame2 = new JFrame();
+//        back2.addActionListener(e -> frame2.dispose());
+//        frame2.setSize(800, 800);
+//        frame2.setLocationRelativeTo(null);
+//        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    }
 
     // EFFECTS: sets up the frame
     void setFrame() {
