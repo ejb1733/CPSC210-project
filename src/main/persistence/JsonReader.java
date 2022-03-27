@@ -24,7 +24,7 @@ public class JsonReader extends Courses {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads worklistlists from file and returns it;
     // throws IOException if an error occurs reading data from file
     public WorklistList read() throws IOException {
         String jsonData = readFile(source);
@@ -62,7 +62,7 @@ public class JsonReader extends Courses {
     }
 
     // MODIFIES: wll
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // EFFECTS: parses worklist from JSON object and adds it to workroom
     private void addWorklist(WorklistList wll, JSONObject jsonObject) {
         String name = jsonObject.getString("worklistName");
         Worklist worklist = new Worklist(name);

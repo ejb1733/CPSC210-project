@@ -22,8 +22,8 @@
 
 This project is based off the courses listed at https://www.cs.ubc.ca/prerequisite-rules </p>
 
-> <h3 style="text-align:center"> <em>User Stories</em></h3>
->
+<h3 style="text-align:center"> <em>User Stories</em></h3>
+
 > - As a user, I'd like to be able to add courses to my worklist.
 > - As a user, I'd like to be able to name my worklist.
 > - As a user, I'd like to be able to create custom courses.
@@ -31,3 +31,17 @@ This project is based off the courses listed at https://www.cs.ubc.ca/prerequisi
 > or by deleting a worklist.
 > - As a user, I want to be able to save my worklists to a file.
 > - As a user, I want to be able to load my worklists from a file.
+> 
+<h3><center><em>Phase 4: Task 2</em></center></h3>
+----------EVENT LOG----------
+<br>Worklist - 2021W2 - was created
+<br>CPSC 213 was added to 2021W2
+<br>CPSC 221 was added to 2021W2
+<br>Worklist - Awesome Worklist - was created
+<br>CPSC 444 was added to Awesome Worklist
+<br>CPSC 322 was added to Awesome Worklist
+<br>Worklist - 2021W2 - had its name changed to - Coolest Worklist
+<br>CPSC 221 was removed from Coolest Worklist
+<br>CPSC 213 was removed from Coolest Worklist
+<br>CPSC 210 was added to Coolest Worklist
+<br>Worklist - Awesome Worklist - was deleted>

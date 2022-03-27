@@ -1,6 +1,8 @@
 package ui;
 
 import model.Courses;
+import model.Event;
+import model.EventLog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +31,14 @@ public class WelcomePage extends Courses implements ActionListener {
             wll.getWll();
         }
         buttonQuit.addActionListener(
-                e -> System.exit(1)
+                e -> {
+                    System.out.println();
+                    System.out.println("----------EVENT LOG----------");
+                    for (Event event : EventLog.getInstance()) {
+                        System.out.println(event.getDescription());
+                    }
+                    System.exit(1);
+                }
         );
         buttonNewWorklist.addActionListener(this);
         buttonNewCourse.addActionListener(e -> new CreateCoursePage());

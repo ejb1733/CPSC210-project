@@ -55,7 +55,7 @@ public class WonderfulWorklists extends Courses {
             }
         }
         System.out.println("\nUntil next time!");
-        System.exit(999);
+        System.exit(1);
     }
 
     // MODIFIES: this
