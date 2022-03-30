@@ -1,9 +1,8 @@
 package ui;
 
-import model.Courses;
 
 // Main method to run the project
-public class Main extends Courses {
+public class Main {
 
     // EFFECTS: initializes the UI and console
     public static void main(String[] args) {

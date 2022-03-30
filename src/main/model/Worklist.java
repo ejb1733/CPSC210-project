@@ -3,7 +3,6 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
-import model.Worklist;
 
 import java.util.ArrayList;
 
@@ -29,7 +28,7 @@ public class Worklist implements Writable {
         } else {
             this.worklist.add(course);
             EventLog.getInstance().logEvent(new Event(course.getCourseName() + " was added to " + this.name));
-            System.out.println(course.getCourseName() + " has been successfully added to " + getWorklistName());
+//            System.out.println(course.getCourseName() + " has been successfully added to " + getWorklistName());
         }
     }
 
@@ -37,8 +36,8 @@ public class Worklist implements Writable {
     // MODIFIES: this
     // EFFECTS: removes course from worklist
     public void removeCourse(Course course) {
-        System.out.println(course.getCourseName() + " has been successfully removed from "
-                + getWorklistName());
+//        System.out.println(course.getCourseName() + " has been successfully removed from "
+//                + getWorklistName());
         EventLog.getInstance().logEvent(new Event(course.getCourseName() + " was removed from " + this.name));
         this.worklist.remove(course);
     }

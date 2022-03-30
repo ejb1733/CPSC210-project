@@ -41,9 +41,9 @@ public class WonderfulWorklists extends Courses {
             command = input.next();
             command = command.toLowerCase();
             if (command.equals("q")) {
-                System.out.println("Would you like to save your worklists before you quit?");
-                System.out.println("\t Y -> Save");
-                System.out.println("\t Q -> Quit without saving");
+//                System.out.println("Would you like to save your worklists before you quit?");
+//                System.out.println("\t Y -> Save");
+//                System.out.println("\t Q -> Quit without saving");
                 String choice = input.next();
                 choice = choice.toLowerCase();
                 if (choice.equals("y")) {
@@ -54,7 +54,7 @@ public class WonderfulWorklists extends Courses {
                 processCommand(command);
             }
         }
-        System.out.println("\nUntil next time!");
+//        System.out.println("\nUntil next time!");
         System.exit(1);
     }
 
@@ -79,7 +79,7 @@ public class WonderfulWorklists extends Courses {
                 saveWorklistList(wll);
                 break;
             default:
-                System.out.println("Please choose from a selection above");
+//                System.out.println("Please choose from a selection above");
                 break;
         }
     }

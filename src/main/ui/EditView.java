@@ -5,27 +5,24 @@ import model.Worklist;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 // Represents the Edit -> View courses page
-public class EditViewCoursesPage extends JComponent {
+public class EditView extends JComponent {
     JFrame frame;
     JPanel panel;
     JLabel label;
     JButton next;
     JButton back = new JButton("Back to Edit Menu");
-    Worklist worklist;
 
     int count = 0;
 
     // EFFECTS: constructs a new page
-    EditViewCoursesPage(Worklist wl) {
-        worklist = wl;
-        viewCourses();
+    EditView(Worklist wl) {
+        viewCourses(wl);
     }
 
     // EFFECTS: displays the courses in worklist
-    void viewCourses() {
+    void viewCourses(Worklist worklist) {
         setFrame();
         for (Course c : worklist.getWorklistEntries()) {
             panel.add(next = new JButton(c.getCourseName()));

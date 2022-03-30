@@ -95,16 +95,16 @@ public abstract class Courses {
 
     // EFFECTS: print a list of options to console
     public void menu() {
-        System.out.println();
-        System.out.println("Welcome to UBC WonderfulWorklists!");
-        System.out.println("Please select from the following options:");
-        System.out.println("\n\tN -> Create a New Worklist");
-        System.out.println("\tC -> Create a New Course");
-        System.out.println("\tE -> Edit your Worklists");
-        System.out.println(" ");
-        System.out.println("\tL -> Load your Worklists");
-        System.out.println("\tS -> Save your Worklists");
-        System.out.println("\n\tQ -> Quit");
+//        System.out.println();
+//        System.out.println("Welcome to UBC WonderfulWorklists!");
+//        System.out.println("Please select from the following options:");
+//        System.out.println("\n\tN -> Create a New Worklist");
+//        System.out.println("\tC -> Create a New Course");
+//        System.out.println("\tE -> Edit your Worklists");
+//        System.out.println(" ");
+//        System.out.println("\tL -> Load your Worklists");
+//        System.out.println("\tS -> Save your Worklists");
+//        System.out.println("\n\tQ -> Quit");
         System.out.println();
     }
 

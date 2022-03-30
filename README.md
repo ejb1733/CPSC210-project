@@ -44,4 +44,11 @@ This project is based off the courses listed at https://www.cs.ubc.ca/prerequisi
 <br>CPSC 221 was removed from Coolest Worklist
 <br>CPSC 213 was removed from Coolest Worklist
 <br>CPSC 210 was added to Coolest Worklist
-<br>Worklist - Awesome Worklist - was deleted>
+<br>Worklist - Awesome Worklist - was deleted
+<br>----------EVENT LOG----------
+
+<h3><center><em>Phase 4: Task 3</em></center></h3>
+- more efficiently create the default courses, such as by using an enum
+- access the WorklistList without having to extend Courses
+- remove redundant associations (already done)
+

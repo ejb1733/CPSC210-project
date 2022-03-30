@@ -37,6 +37,7 @@ public class WelcomePage extends Courses implements ActionListener {
                     for (Event event : EventLog.getInstance()) {
                         System.out.println(event.getDescription());
                     }
+                    System.out.println("----------EVENT LOG----------");
                     System.exit(1);
                 }
         );
@@ -56,7 +57,7 @@ public class WelcomePage extends Courses implements ActionListener {
 
     // EFFECTS: sets up the panels
     void setPanels() {
-        ImageIcon logo = new ImageIcon("/Users/ejb/Desktop/UBCV/2021W2/CPSC 210/projekt/yay.jpeg");
+        ImageIcon logo = new ImageIcon("./data/yay.jpeg");
         Image scaleImage = logo.getImage().getScaledInstance(425, 120, Image.SCALE_SMOOTH);
         panel = new JPanel();
         panel.setBorder(BorderFactory.createMatteBorder(20, 40, 20, 40, ubcColour));
@@ -90,7 +91,7 @@ public class WelcomePage extends Courses implements ActionListener {
             new NewWorklistPage(0);
         } else if (e.getSource() == buttonEditWorklists) {
             if (wll.size() > 0) {
-                new EditPage();
+                new Edit();
             } else {
                 emptyWorklistList();
             }

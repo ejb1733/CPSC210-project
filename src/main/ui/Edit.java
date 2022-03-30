@@ -11,7 +11,7 @@ import model.Courses;
 
 // Represents the edit page that presents the user with their worklists and asks which one they would like to edit,
 // then gives them 5 choices for how to edit their worklist
-public class EditPage extends Courses implements ActionListener {
+public class Edit extends Courses implements ActionListener {
     JFrame frame1;
     JFrame frame2;
     JFrame frame3;
@@ -30,7 +30,7 @@ public class EditPage extends Courses implements ActionListener {
     JButton delete;
 
     // EFFECTS: creates a new page
-    EditPage() {
+    Edit() {
         firstPage();
     }
 
@@ -82,17 +82,17 @@ public class EditPage extends Courses implements ActionListener {
 
     // EFFECTS: provides functionality for each of the 5 choice buttons
     void editButtons(Worklist wl) {
-        view.addActionListener(e -> new EditViewCoursesPage(wl));
+        view.addActionListener(e -> new EditView(wl));
         add.addActionListener(
                 e -> {
                     NewWorklistPage p = new NewWorklistPage(1);
                     p.secondPage(wl);
                 }
         );
-        remove.addActionListener(e -> new EditRemoveCoursePage(wl));
+        remove.addActionListener(e -> new EditRemove(wl));
         editName.addActionListener(
                 e -> {
-                    new EditNamePage(wl);
+                    new EditName(wl);
                     frame2.dispose();
                     frame1.dispose();
                 }

@@ -7,14 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 
 // Represents the Edit -> Remove a course page
-public class EditRemoveCoursePage {
+public class EditRemove {
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     JButton nextButton;
     JButton back;
 
     // EFFECTS: constructs a new page
-    EditRemoveCoursePage(Worklist wl) {
+    EditRemove(Worklist wl) {
         removeCourse(wl);
     }
 

@@ -5,22 +5,19 @@ import model.Worklist;
 import javax.swing.*;
 
 // Represents the page for editing a course's name
-public class EditNamePage {
+public class EditName {
     JFrame frame;
     JPanel panel;
     JTextField name = new JTextField(20);
     JButton enter = new JButton("Enter");
 
-    Worklist worklist;
-
     // EFFECTS: constructs a new page
-    EditNamePage(Worklist wl) {
-        worklist = wl;
-        editName();
+    EditName(Worklist wl) {
+        editName(wl);
     }
 
     // EFFECTS: designs the page
-    void editName() {
+    void editName(Worklist worklist) {
         JLabel label = new JLabel("Please enter a new name for " + worklist.getWorklistName());
         frame = new JFrame();
         panel = new JPanel();
